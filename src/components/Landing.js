@@ -2,6 +2,6 @@ import React from 'react'
 
 function Landing() {
     return (
-        <div>Landing.js</div>
+        <div>CJ is kinda cool but only kinda</div>
     )
 }
