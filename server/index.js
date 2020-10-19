@@ -4,6 +4,7 @@ const massive = require('massive')
 const session = require('express-session')
 const authCtrl = require('./controllers/authController')
 const profileCtrl = require('./controllers/profileController')
+const weatherCtrl = ('./controllers/weatherController.js')
 
 const app = express()
 
