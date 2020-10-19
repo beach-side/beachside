@@ -1,15 +1,24 @@
 require('dotenv').config()
 const express = require('express')
 const massive = require('massive')
-const express = require('express-session')
-const app = express()
-const authCtrl = ('./controllers/authController.js')
-const profileCtrl = ('./controllers/profileController.js')
+const session = require('express-session')
+const authCtrl = require('./controllers/authController')
+const profileCtrl = require('./controllers/profileController')
 const weatherCtrl = ('./controllers/weatherController.js')
+
+const app = express()
+//broken
+const { CONNECTION_STRING, SERVER_PORT, SESSION_SECRET } = process.env
 
 app.use(express.json())
 
-//* Auth Contollers
+app.use(session({
+    secret: SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge: 1000 * 60 * 60 * 24 * 365 }
+}))
+
 app.post('/api/auth/register', authCtrl.register)
 app.post('/api/auth/login', authCtrl.login)
 app.post('/api/auth/logout', authCtrl.logout)
@@ -22,3 +31,12 @@ app.get('/api/users/:userid/favorites/', profileCtrl.getFavoriteBeaches)
 
 //* Weather Contoller
 app.get('/api/weather', weatherCtrl.getWeather)
+
+massive({
+    connectionString: CONNECTION_STRING,
+    ssl: { rejectUnauthorized: false }
+}).then(dbInstance => {
+    app.set('db', dbInstance)
+    console.log('DB is alive!')
+    app.listen(SERVER_PORT, () => console.log(`${SERVER_PORT} is alive!`))
+})
