@@ -5,3 +5,5 @@ function Landing() {
         <div>CJ is kinda cool but only kinda</div>
     )
 }
+
+export default Landing
