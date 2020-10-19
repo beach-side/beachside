@@ -1,10 +1,14 @@
-require('dotenv')
+require('dotenv').config()
 const express = require('express')
 const massive = require('massive')
 const express = require('express-session')
-const app = express()
 const authCtrl = ('./controllers/authController.js')
 const profileCtrl = ('./controllers/profileController.js')
+const weatherCtrl = ('./controllers/weatherController.js')
+const path = require('path')
+
+const app = express()
+
 app.use(express.json())
 
 //* Auth Contollers
