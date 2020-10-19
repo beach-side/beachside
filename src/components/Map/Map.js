@@ -15,6 +15,9 @@ const center = {
     lat: 40.297119,
     lng: -111.695007
 }
+const options = {
+
+}
 
 
 function Map() {
@@ -33,6 +36,10 @@ function Map() {
                 mapContainerStyle={mapContainerStyle}
                 zoom={8}
                 center={center}
+                options={options}
+                onClick={(e) => {
+                    console.log(e)
+                }}
             >
             </GoogleMap>
         </div>
