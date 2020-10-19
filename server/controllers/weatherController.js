@@ -1,6 +1,11 @@
 const axios = require('axios')
 const { WEATHER_API_KEY } = process.env
 
+<<<<<<< HEAD
+=======
+module.exports = {
+    getWeather: async (req, res) => {
+>>>>>>> main
 
 
 // Create a new JavaScript Date object based on the timestamp
