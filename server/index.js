@@ -5,10 +5,7 @@ const session = require('express-session')
 const authCtrl = require('./controllers/authController')
 const profileCtrl = require('./controllers/profileController')
 const weatherCtrl = require('./controllers/weatherController.js')
-<<<<<<< HEAD
-=======
 const stormCtrl = require('./controllers/stormglassController')
->>>>>>> main
 
 const app = express()
 const { CONNECTION_STRING, SERVER_PORT, SESSION_SECRET } = process.env
