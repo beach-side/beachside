@@ -12,6 +12,13 @@ export function setUser(payload) {
     }
 }
 
+export function logoutUser() {
+    return {
+        type: LOGOUT_USER,
+        payload: null
+    }
+}
+
 export default function (state = initialState, action) {
     const {type, payload} = action
     switch (type) {

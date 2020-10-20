@@ -32,6 +32,8 @@ function Map() {
 
     return (
         <div>
+            <NavBar />
+            
             <GoogleMap
                 mapContainerStyle={mapContainerStyle}
                 zoom={8}
