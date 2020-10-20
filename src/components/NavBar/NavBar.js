@@ -1,6 +1,6 @@
 // this is a test hi guys!import React from 'react'
-
-import react from 'react'
+import React from 'react'
+import {withRouter} from 'react-router-dom'
 
 function NavBar() {
     return (
@@ -12,12 +12,17 @@ function NavBar() {
 
             <div className='all-links'>
                 <div className='nav-links'>
-                    <a className='favorites-link' onClick={() => {}}>
-                    Favorites
-                    </a>
-                    <a className='map-link' onClick={() => {}}>
-                    Map
-                    </a>
+                    <Link className='favorites-link' 
+                        onClick={() => {}}>
+                        <button >
+                        Favorites
+                        </button>
+                    </Link>
+                    <Link>
+                        <button className='map-link' onClick={() => {}}>
+                        Map
+                        </button>
+                    </Link>
                 </div>
 
                 <a className='logout-link' onClick={() => {}}>
@@ -28,4 +33,4 @@ function NavBar() {
     )
 }
 
-export default NavBar
+export default (withRouter(NavBar))
