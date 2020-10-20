@@ -1,8 +1,16 @@
 import React from 'react'
+import NavBar from '../NavBar/NavBar'
 
 function Favorites() {
+
   return (
-    <div>CJ is kinda cool but only kinda</div>
+    <div>
+
+      <NavBar />
+
+      CJ is kinda cool but only kinda
+
+    </div>
   )
 }
 

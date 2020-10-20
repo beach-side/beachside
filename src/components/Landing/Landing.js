@@ -1,5 +1,9 @@
 import React, {useState} from 'react'
 
+import { connect } from 'react-redux'
+import NavBar from '../NavBar/NavBar'
+
+
 function Landing() {
 
     const [showLogin, setShowLogin] = useState(false)
@@ -24,6 +28,8 @@ function Landing() {
     return (
         <div className='landing'> 
             Landing 
+
+            <NavBar />
 
             <div className='nav-to-map-button'>
                 <button>
