@@ -1,28 +1,29 @@
 // this is a test hi guys!import React from 'react'
 import React from 'react'
+
 import {withRouter} from 'react-router-dom'
 
-function NavBar() {
+function NavBar(props) {
     return (
         <div className='header'>
             
             <div className='logo-home-link'>
-                BeachSide Home Link
+                <a className='beachside-logo-link'
+                    onClick={ () => {props.history.push('/')}} >
+                    BeachSide
+                </a>
             </div>
 
             <div className='all-links'>
                 <div className='nav-links'>
-                    <Link className='favorites-link' 
-                        onClick={() => {}}>
-                        <button >
+                    <a className='favorites-link' 
+                        onClick={ () => {props.history.push('/favorites')} }>
                         Favorites
-                        </button>
-                    </Link>
-                    <Link>
-                        <button className='map-link' onClick={() => {}}>
+                    </a>
+                    <a className='map-link' 
+                        onClick={ () => {props.history.push('/beachmap')} }>
                         Map
-                        </button>
-                    </Link>
+                    </a>
                 </div>
 
                 <a className='logout-link' onClick={() => {}}>
