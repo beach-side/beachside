@@ -1,23 +1,22 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import {setUser, logoutUser} from '../ducks/authReducer'
-import {withRouter} from 'react-router-dom'
+import {setUser, logoutUser} from '../../ducks/authReducer'
+import {withRouter, useHistory} from 'react-router-dom'
 
 function NavBar(props) {
     return (
         <div className='header'>
             
-            <div className='nav-links'>
+            <div className='left-side-links'>
 
                 <a className='beachside-logo-link'
                     onClick={ () => {props.history.push('/')}} >
-                        {/* IMG tag here wrapped as link */}
-                    BeachSide
+                        {/* REPLACE src LINK BELOW WITH UPLOADED BEACHSIDE LOGO */}
+                        <img src={"https://i.pinimg.com/originals/14/f4/2b/14f42b4fc9e92dd812cf7126d0cb784b.gif"} height='150px' width='190px' />
+                    
                 </a>
 
-            <div className='all-links'>
                 <div className='nav-links'>
-
                     <a className='favorites-link' 
                         onClick={ () => {props.history.push('/favorites')} }> Favorites </a>
 
@@ -25,17 +24,19 @@ function NavBar(props) {
                         onClick={ () => {props.history.push('/beachmap')} }> Map </a>
                 </div>
             </div>
-            {/* NEED TO TEST props.user BELOW AND ENSURE USER DATA IS
-            CONSISTENT WITH BACKEND AND PULLS CORRECTLY */}
-            {props.user && props.user.first}
-
-            {/* NEED TO TEST BELOW AFTER DUMMY USER DATA IS CREATED - KARA/BRAD 10/20 */}
+            
+            <div className='right-side-links'>
+                {/* NEED TO TEST props.user BELOW AND ENSURE USER DATA IS
+                CONSISTENT WITH BACKEND AND PULLS CORRECTLY */}
+                <p className='greeting'>
+                 {props.user.first && `Welcome, ${props.user.first}!`} </p>
+                
+                {/* NEED TO TEST BELOW AFTER DUMMY USER DATA IS CREATED - KARA/BRAD 10/20 */}
                 <a className='logout-link' onClick={() => {
-                    props.logoutUser()
-                    props.history.push('/')
+                props.logoutUser()
+                props.history.push('/')
                 }}> Logout </a>
-
-            </div>
+            </div>  
         </div>
     )
 }
