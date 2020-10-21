@@ -28,7 +28,7 @@ app.get('/api/auth/getUser', authCtrl.getUser)
 //* Profile Controllers
 app.post('/api/users/:userid/favorites', profileCtrl.addBeach)
 app.delete('/api/users/:userid/favorites/:favoriteid', profileCtrl.deleteBeach)
-app.get('/api/users/:userid/favorites/', profileCtrl.getFavoriteBeaches)
+app.get('/api/users/:userid/favorites', profileCtrl.getFavoriteBeaches)
 
 //* Weather Controller
 app.get('/api/weather', weatherCtrl.getWeather)
