@@ -29,7 +29,7 @@ function NavBar(props) {
                 {/* NEED TO TEST props.user BELOW AND ENSURE USER DATA IS
                 CONSISTENT WITH BACKEND AND PULLS CORRECTLY */}
                 {/* <p className='greeting'>
-                 {props.user.first && `Welcome, ${props.user.first}!`} </p> */}
+                 {props.user && `Welcome, ${props.user.email}!`} </p> */}
                 
                 {/* NEED TO TEST BELOW AFTER DUMMY USER DATA IS CREATED - KARA/BRAD 10/20 */}
                 <a className='logout-link' onClick={() => {
