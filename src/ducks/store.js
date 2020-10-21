@@ -6,4 +6,4 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 //     authReducer
 // })
 
-export default createStore(authReducer, composeWithDevTools)
+export default createStore(authReducer, composeWithDevTools())
