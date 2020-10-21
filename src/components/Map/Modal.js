@@ -5,7 +5,7 @@ import {withRouter, useHistory} from 'react-router-dom'
 
 function Modal(props) {
     return (
-        <div className='header'>
+        <div className='modal'>
             
              
         </div>
