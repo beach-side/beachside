@@ -6,7 +6,9 @@ import { withRouter, useHistory } from 'react-router-dom'
 function Modal(props) {
     return (
         <div className='modal'>
-            super cool dude
+            <div>dope</div>
+            <div>rad</div>
+            <div>tubeular</div>
 
         </div>
     )
