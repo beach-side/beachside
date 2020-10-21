@@ -3,7 +3,7 @@ import {Switch, Route} from 'react-router-dom'
 import Landing from './components/Landing/Landing'
 import Favorites from './components/FavoriteBeaches/Favorites'
 import Map from './components/Map/Map'
-import Modal from './components/Modal/Modal'
+import Modal from './components/Map/Modal'
 
 
 export default (
