@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react'
+import InfoContent from './InfoContent'
 import {
     GoogleMap,
     useLoadScript,
@@ -61,11 +62,14 @@ function Map() {
                         position={{ lat: marker.lat, lng: marker.lng }}
                         onClick={() => {
                             setSelected(marker)
+                            console.log(selected)
                         }}
                     />
                 })}
 
-                {selected ? (<InfoWindow></InfoWindow>) : null}
+                {selected ? (<InfoWindow position={{ lat: selected.lat, lng: selected.lng }} onCloseClick={() => setSelected(null)}>
+                    <InfoContent lat={selected.lat} lng={selected.lng} />
+                </InfoWindow>) : null}
             </GoogleMap>
         </div>
     )

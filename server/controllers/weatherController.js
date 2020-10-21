@@ -19,7 +19,7 @@ function secondsToTime(unix) {
 
 module.exports = {
     getWeather: async (req, res) => {
-        const { lat, lng } = req.body
+        const { lat, lng } = req.query
         let data = {}
         await axios.get(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${WEATHER_API_KEY}&units=imperial`)
             .then(res => {
@@ -27,7 +27,8 @@ module.exports = {
                 data = {
                     condition: weather[0].description,
                     temperature: main.temp,
-                    icon: `http://openweathermap.org/img/wn/${weather[0].icon}@4x.png`,
+                    feelsLike: main.feels_like,
+                    icon: `http://openweathermap.org/img/wn/${weather[0].icon}@2x.png`,
                     sunrise: secondsToTime(sys.sunrise),
                     sunset: secondsToTime(sys.sunset),
                     wind: wind
