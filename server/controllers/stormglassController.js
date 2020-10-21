@@ -6,10 +6,6 @@ let counterTwo = 0
 let counterThree = 0
 let counterFour = 0
 
-//Get first four responses from Tide and send back on array. 
-//Logic our seperate keys for weather information.
-
-
 module.exports = {
   getTides: async (req, res) => {
     const { lat, lng } = req.body
