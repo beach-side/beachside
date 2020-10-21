@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react'
 import InfoContent from './InfoContent'
+import SearchBox from './SearchBox'
+import './map.css'
 import {
     GoogleMap,
     useLoadScript,
@@ -17,8 +19,10 @@ const center = {
     lng: -111.695007
 }
 const options = {
-
+    disableDefaultUI: true,
+    zoomControl: true,
 }
+
 
 
 
@@ -37,12 +41,20 @@ function Map() {
         mapRef.current = map;
     }, [])
 
+    const panTo = useCallback(({ lat, lng }) => {
+        mapRef.current.panTo({ lat, lng })
+        mapRef.current.setZoom(14)
+    }, [])
+
     if (loadError) return "Error loading maps"
     if (!isLoaded) return "Loading Maps"
 
 
     return (
         <div>
+            <div className='search-box'>
+                <SearchBox panTo={panTo} />
+            </div>
             <GoogleMap
                 mapContainerStyle={mapContainerStyle}
                 zoom={8}
@@ -61,6 +73,7 @@ function Map() {
                         key={i}
                         position={{ lat: marker.lat, lng: marker.lng }}
                         onClick={() => {
+                            setSelected(null)
                             setSelected(marker)
                             console.log(selected)
                         }}

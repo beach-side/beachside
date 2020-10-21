@@ -35,15 +35,9 @@ module.exports = {
                 const { weather, main, wind, sys } = res.data
                 data = {
                     condition: weather[0].description,
-<<<<<<< HEAD
-                    temperature: main.temp,
-                    feelsLike: main.feels_like,
-                    icon: `http://openweathermap.org/img/wn/${weather[0].icon}@2x.png`,
-=======
                     temperature: Math.floor(main.temp),
                     feelsLike: Math.floor(main.feels_like),
-                    icon: `http://openweathermap.org/img/wn/${weather[0].icon}@4x.png`,
->>>>>>> main
+                    icon: `http://openweathermap.org/img/wn/${weather[0].icon}@2x.png`,
                     sunrise: secondsToTime(sys.sunrise),
                     sunset: secondsToTime(sys.sunset),
                     wind: wind
