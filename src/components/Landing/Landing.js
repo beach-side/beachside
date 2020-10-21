@@ -1,10 +1,10 @@
 import React, {useState} from 'react'
-
 import { connect } from 'react-redux'
+import {withRouter} from 'react-router-dom'
 import NavBar from '../NavBar/NavBar'
 
 
-function Landing() {
+function Landing(props) {
 
     const [showLogin, setShowLogin] = useState(false)
     const [showRegister, setShowRegister] = useState(false)
@@ -27,22 +27,24 @@ function Landing() {
 
     return (
         <div className='landing'> 
-            Landing 
 
             <NavBar />
 
-            <div className='nav-to-map-button'>
-                <button>
+            <div className='nav-to-map-div'>
+                <button className='nav-to-map-button'
+                    onClick={() => {props.history.push('/beachmap')}}>
                     Search For Beaches
                 </button>
             </div>
 
             <div className='login-links'>
-                <button className='login-link'>
+                <button className='login-link'
+                onClick={() => {handleShowLogin()}}>
                     Login
                 </button>
                 <div className='create-acct-area'>
-                    <button className='register-link'>
+                    <button className='register-link'
+                    onClick={() => {handleShowRegister()}}>
                         Create An Account
                     </button>
                     <p className='register-reason'> to view saved locations </p>
@@ -50,12 +52,19 @@ function Landing() {
             </div>
 
             <div className='input-box-area'>
-                input box area 
-                render 2 components here
+                
+                {showLogin && <div>
+                    login
+                </div>}
+
+                {showRegister && <div>
+                    register
+                </div>}
+
             </div>
 
         </div>
     )
 }
 
-export default Landing
+export default (withRouter(Landing))

@@ -1,4 +1,5 @@
 import React from 'react'
+import NavBar from '../NavBar/NavBar'
 import {
     GoogleMap,
     useLoadScript,
@@ -32,6 +33,8 @@ function Map() {
 
     return (
         <div>
+            <NavBar />
+            
             <GoogleMap
                 mapContainerStyle={mapContainerStyle}
                 zoom={8}
