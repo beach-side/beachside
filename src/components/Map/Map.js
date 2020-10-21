@@ -36,6 +36,7 @@ function Map() {
     const [markers, setMarkers] = useState([])
     const [selected, setSelected] = useState(null)
 
+
     const mapRef = useRef();
 
     const onMapLoad = useCallback((map) => {
@@ -78,7 +79,7 @@ function Map() {
                         onClick={() => {
                             setSelected(null)
                             setSelected(marker)
-                            console.log(selected)
+                            // console.log(selected)
                         }}
                     />
                 })}
@@ -87,6 +88,7 @@ function Map() {
                     <InfoContent lat={selected.lat} lng={selected.lng} />
                 </InfoWindow>) : null}
             </GoogleMap>
+
         </div>
     )
 }

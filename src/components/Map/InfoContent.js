@@ -17,7 +17,7 @@ function InfoContent(props) {
             <h2>{temperature} °F</h2>
             <img src={icon} alt='weather' />
             <p>{condition}</p>
-            <button onClick={() => setModal(true)}></button>
+            <button onClick={() => setModal(true)}>Surf Details</button>
             {!modal ? null : <Modal setModal={setModal} lat={props.lat} lng={props.lng} />}
         </div>
     )
