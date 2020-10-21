@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef, useCallback } from 'react'
 import InfoContent from './InfoContent'
 import SearchBox from './SearchBox'
 import './map.css'
+import NavBar from '../NavBar/NavBar'
 import {
     GoogleMap,
     useLoadScript,
@@ -55,6 +56,8 @@ function Map() {
             <div className='search-box'>
                 <SearchBox panTo={panTo} />
             </div>
+            <NavBar />
+
             <GoogleMap
                 mapContainerStyle={mapContainerStyle}
                 zoom={8}
