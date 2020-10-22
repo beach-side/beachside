@@ -6,6 +6,7 @@ const authCtrl = require('./controllers/authController')
 const profileCtrl = require('./controllers/profileController')
 const weatherCtrl = require('./controllers/weatherController.js')
 const stormCtrl = require('./controllers/stormglassController')
+const beachCtrl = require('./controllers/beachesController')
 
 const app = express()
 const { CONNECTION_STRING, SERVER_PORT, SESSION_SECRET } = process.env
@@ -36,6 +37,9 @@ app.get('/api/weather', weatherCtrl.getWeather)
 //* StormGlass Controller
 app.get('/api/storm/tides', stormCtrl.getTides)
 app.get('/api/storm/weather', stormCtrl.getWeather)
+
+//*Nearby Beaches
+app.get('/api/beaches', beachCtrl.getBeaches)
 
 massive({
   connectionString: CONNECTION_STRING,
