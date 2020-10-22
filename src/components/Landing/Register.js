@@ -40,6 +40,7 @@ class Register extends Component {
           <div className="flex-horizontal inputs">
             <div className="flex-vertical">
               <input
+                input type="email"
                 maxLength="100"
                 placeholder="Enter Email"
                 name="email"

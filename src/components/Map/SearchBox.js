@@ -38,7 +38,7 @@ function SearchBox(props) {
             value={value}
             onChange={(e) => { setValue(e.target.value) }}
             disabled={!ready}
-            placeholder='Enter and address'
+            placeholder='Enter An Address'
         />
         <ComboboxPopover>
             {status === 'OK' && data.map(({ id, description }) =>
