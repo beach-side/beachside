@@ -20,6 +20,7 @@ module.exports = {
     getFavoriteBeaches: async (req, res) => {
         const db = req.app.get('db')
         const { userid } = req.params
+        console.log(userid)
         const beaches = await db.get_beaches([userid])
 
         res.status(200).send(beaches)
