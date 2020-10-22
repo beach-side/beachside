@@ -6,13 +6,9 @@ let counterTwo = 0
 let counterThree = 0
 let counterFour = 0
 
-//Get first four responses from Tide and send back on array. 
-//Logic our seperate keys for weather information.
-
-
 module.exports = {
   getTides: async (req, res) => {
-    const { lat, lng } = req.body
+    const { lat, lng } = req.query
     let dataArray = []
 
     if (counter <= 50) {
@@ -22,7 +18,7 @@ module.exports = {
         }
       }).then((res) => {
         counter = res.data.meta.requestCount
-
+        console.log(res.data)
         for (let i = 0; i < 5; i++) {
           let tideObj = res.data.data[i]
           let time = tideObj.time.split('').splice(11, 8).join('')
@@ -34,7 +30,7 @@ module.exports = {
           dataArray.push(dataObj)
         }
       }).catch(async (err) => {
-        console.log(err)
+        // console.log(err)
         // if(err === 429){
         await axios.get(`https://api.stormglass.io/v2/tide/extremes/point?lat=${lat}&lng=${lng}`, {
           headers: {
@@ -58,7 +54,8 @@ module.exports = {
             }
             dataArray.push(dataObj)
           }
-        }).catch((err) => console.log(err))
+        })
+        // .catch((err) => console.log(err))
       })
     } else {
       await axios.get(`https://api.stormglass.io/v2/tide/extremes/point?lat=${lat}&lng=${lng}`, {
@@ -83,7 +80,7 @@ module.exports = {
     console.log(counter, counterTwo, counterThree, counterFour)
   },
   getWeather: async (req, res) => {
-    const { lat, lng, localStart, localEnd } = req.body
+    const { lat, lng, localStart, localEnd } = req.query
     const params = 'waveHeight,waterTemperature,swellDirection,swellHeight,swellPeriod'
     const start = localStart
     const end = localEnd

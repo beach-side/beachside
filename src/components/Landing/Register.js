@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-// import { loginUser } from '../
+import {setUser} from '../../ducks/authReducer'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
+import Landing from './Landing'
 
 class Register extends Component {
   constructor() {
@@ -22,17 +23,17 @@ class Register extends Component {
   handleRegister = () => {
     const { email, password } = this.state
     axios
-      .post('/auth/register', { email, password })
+      .post('/api/auth/register', { email, password })
       .then((res) => {
-        this.props.loginUser(res.data)
-        // this.props.history.push('/dashboard')
+        this.props.setUser(res.data)
+        this.props.history.push('/beachmap')
       })
       .catch((err) => {
         alert(err.message)
       })
   }
 
-  render() {
+  render(props) {
     return (
       <div className="app-body">
         <div className="input-container">
@@ -66,7 +67,11 @@ class Register extends Component {
             </button>
           </div>
           <div className="flex-horizontal link">
-            <span>Login </span>
+          <button className='cancel-button'
+                    onClick={() => {this.props.hideAll()}}>
+                        Cancel
+                    </button>
+            {/* <span>Login </span> */}
             <Link className="input-container-button" to="/">
               Login
             </Link>
@@ -77,4 +82,4 @@ class Register extends Component {
   }
 }
 
-export default connect(null, { loginUser })(Register)
+export default connect(null, { setUser })(withRouter(Register))

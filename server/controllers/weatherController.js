@@ -32,7 +32,7 @@ module.exports = {
         let data = {}
         await axios.get(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${WEATHER_API_KEY}&units=imperial`)
             .then(res => {
-                const { weather, main, wind, sys } = res.data
+                const { weather, main, wind, sys, timezone } = res.data
                 data = {
                     condition: weather[0].description,
                     temperature: Math.floor(main.temp),
@@ -40,7 +40,8 @@ module.exports = {
                     icon: `http://openweathermap.org/img/wn/${weather[0].icon}@2x.png`,
                     sunrise: secondsToTime(sys.sunrise),
                     sunset: secondsToTime(sys.sunset),
-                    wind: wind
+                    wind: wind,
+                    timezone: timezone
                 }
                 // console.log(data)
             }).catch(err => {
