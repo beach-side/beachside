@@ -35,7 +35,6 @@ function Map() {
         libraries,
     })
 
-    const [markers, setMarkers] = useState([])
     const [beaches, setBeaches] = useState([])
     const [selected, setSelected] = useState(null)
 
@@ -44,7 +43,6 @@ function Map() {
 
     const onMapLoad = useCallback((map) => {
         mapRef.current = map;
-        console.log(map)
     }, [])
 
     const panTo = useCallback(({ lat, lng }) => {
