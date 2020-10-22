@@ -50,7 +50,6 @@ function Map() {
     if (loadError) return "Error loading maps"
     if (!isLoaded) return "Loading Maps"
 
-
     return (
         <div>
             <div className='search-box'>

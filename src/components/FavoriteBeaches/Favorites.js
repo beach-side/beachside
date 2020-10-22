@@ -8,7 +8,9 @@ function Favorites() {
 
       <NavBar />
 
-      CJ is kinda cool but only kinda
+      <div className='favorites-list'>
+
+      </div>
 
     </div>
   )
