@@ -8,12 +8,12 @@ function InfoContent(props) {
     useEffect(() => {
         axios.get(`/api/weather?lat=${props.lat}&lng=${props.lng}`,).then(res => {
             setDate(res.data)
-            console.log(res.data)
         })
     }, [])
     const { condition, icon, sunrise, sunset, temperature, wind, timezone } = data
     return (
         <div>
+            <h1>{props.name}</h1>
             <h2>{temperature} °F</h2>
             <img src={icon} alt='weather' />
             <p>{condition}</p>

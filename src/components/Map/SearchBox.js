@@ -29,6 +29,7 @@ function SearchBox(props) {
         try {
             const result = await getGeocode({ address })
             const { lat, lng } = await getLatLng(result[0])
+            await props.getBeaches(lat, lng)
             props.panTo({ lat, lng })
         } catch (error) {
             console.log('error')
