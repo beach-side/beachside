@@ -11,6 +11,7 @@ function InfoContent(props) {
         })
     }, [])
     const { condition, icon, sunrise, sunset, temperature, wind, timezone } = data
+    console.log(props)
     return (
         <div>
             <h1>{props.name}</h1>

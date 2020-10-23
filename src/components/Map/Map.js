@@ -43,6 +43,7 @@ function Map() {
 
     const onMapLoad = useCallback((map) => {
         mapRef.current = map;
+        console.log(mapRef)
     }, [])
 
     const panTo = useCallback(({ lat, lng }) => {
@@ -51,6 +52,7 @@ function Map() {
     }, [])
 
     const getBeaches = (lat, lng) => {
+        setBeaches([])
         Axios.get(`/api/beaches?lat=${lat}&lng=${lng}`).then(res => {
             setBeaches(res.data)
         })
