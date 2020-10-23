@@ -12,7 +12,8 @@ function NavBar(props) {
                 <a className='beachside-logo-link'
                     onClick={ () => {props.history.push('/')}} >
                         {/* REPLACE src LINK BELOW WITH UPLOADED BEACHSIDE LOGO */}
-                        <img src={"https://i.pinimg.com/originals/14/f4/2b/14f42b4fc9e92dd812cf7126d0cb784b.gif"} height='150px' width='190px' />
+                        {/* <img src={"https://i.pinimg.com/originals/14/f4/2b/14f42b4fc9e92dd812cf7126d0cb784b.gif"} height='150px' width='190px' /> */}
+                        <img src={require('../../assets/beachsidelogo.jpg')} height='50%' width='50%' /> 
                     
                 </a>
 
