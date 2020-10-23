@@ -1,4 +1,5 @@
 const axios = require('axios')
+const { DateTime, Settings } = require('luxon')
 const { STORMGLASS_API_KEY_1, STORMGLASS_API_KEY_2 } = process.env
 const { STORMGLASS_API_KEY_3, STORMGLASS_API_KEY_4 } = process.env
 let counter = 0
@@ -6,13 +7,24 @@ let counterTwo = 0
 let counterThree = 0
 let counterFour = 0
 
-//Get first four responses from Tide and send back on array. 
-//Logic our seperate keys for weather information.
+function convertToLocal(resTime, offsetTime) {
+  Settings.defaultZoneName = 'utc'
 
+  const time = resTime
+  const offset = offsetTime
+
+  const now = DateTime.fromISO(time).minus({ seconds: offset })
+
+  console.log(now.toLocaleString(DateTime.DATETIME_MED))
+  return now.toLocaleString(DateTime.DATETIME_MED)
+}
 
 module.exports = {
   getTides: async (req, res) => {
-    const { lat, lng } = req.body
+    const { lat, lng, timezone } = req.query
+
+
+
     let dataArray = []
 
     if (counter <= 50) {
@@ -22,10 +34,10 @@ module.exports = {
         }
       }).then((res) => {
         counter = res.data.meta.requestCount
-
         for (let i = 0; i < 5; i++) {
           let tideObj = res.data.data[i]
-          let time = tideObj.time.split('').splice(11, 8).join('')
+          let time = convertToLocal(tideObj.time, timezone)
+          // .split('').splice(11, 8).join('')
           const dataObj = {
             height: (tideObj.height * 3.281).toFixed(2),
             time: time,
@@ -34,7 +46,7 @@ module.exports = {
           dataArray.push(dataObj)
         }
       }).catch(async (err) => {
-        console.log(err)
+        // console.log(err)
         // if(err === 429){
         await axios.get(`https://api.stormglass.io/v2/tide/extremes/point?lat=${lat}&lng=${lng}`, {
           headers: {
@@ -50,7 +62,7 @@ module.exports = {
 
           for (let i = 0; i < 5; i++) {
             let tideObj = res.data.data[i]
-            let time = tideObj.time.split('').splice(11, 8).join('')
+            let time = convertToLocal(tideObj.time, timezone)
             const dataObj = {
               height: (tideObj.height * 3.281).toFixed(2),
               time: time,
@@ -58,7 +70,8 @@ module.exports = {
             }
             dataArray.push(dataObj)
           }
-        }).catch((err) => console.log(err))
+        })
+        // .catch((err) => console.log(err))
       })
     } else {
       await axios.get(`https://api.stormglass.io/v2/tide/extremes/point?lat=${lat}&lng=${lng}`, {
@@ -69,7 +82,7 @@ module.exports = {
         counterTwo = res.data.meta.requestCount
         for (let i = 0; i < 5; i++) {
           let tideObj = res.data.data[i]
-          let time = tideObj.time.split('').splice(11, 8).join('')
+          let time = convertToLocal(tideObj.time, timezone)
           const dataObj = {
             height: (tideObj.height * 3.281).toFixed(2),
             time: time,
@@ -83,7 +96,7 @@ module.exports = {
     console.log(counter, counterTwo, counterThree, counterFour)
   },
   getWeather: async (req, res) => {
-    const { lat, lng, localStart, localEnd } = req.body
+    const { lat, lng, localStart, localEnd } = req.query
     const params = 'waveHeight,waterTemperature,swellDirection,swellHeight,swellPeriod'
     const start = localStart
     const end = localEnd

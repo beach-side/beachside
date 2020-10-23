@@ -1,5 +1,5 @@
 import React from 'react'
-import {Switch, Route} from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 import Landing from './components/Landing/Landing'
 import Favorites from './components/FavoriteBeaches/Favorites'
 import Map from './components/Map/Map'
@@ -12,6 +12,7 @@ export default (
         <Route exact path='/' component={Landing} />
         <Route path='/favorites' component={Favorites} />
         <Route path='/beachmap' component={Map} />
+        //?route query?
         <Route path='/modal' component={Modal} />
 
     </Switch>

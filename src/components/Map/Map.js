@@ -9,6 +9,7 @@ import {
     Marker,
     InfoWindow,
 } from '@react-google-maps/api'
+import Axios from 'axios'
 
 const libraries = ["places"]
 const mapContainerStyle = {
@@ -27,13 +28,14 @@ const options = {
 
 
 
+
 function Map() {
     const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
         libraries,
     })
 
-    const [markers, setMarkers] = useState([])
+    const [beaches, setBeaches] = useState([])
     const [selected, setSelected] = useState(null)
 
 
@@ -45,50 +47,66 @@ function Map() {
 
     const panTo = useCallback(({ lat, lng }) => {
         mapRef.current.panTo({ lat, lng })
-        mapRef.current.setZoom(14)
+        mapRef.current.setZoom(10)
     }, [])
+
+    const getBeaches = (lat, lng) => {
+        Axios.get(`/api/beaches?lat=${lat}&lng=${lng}`).then(res => {
+            setBeaches(res.data)
+        })
+    }
+
+
 
     if (loadError) return "Error loading maps"
     if (!isLoaded) return "Loading Maps"
 
-
     return (
         <div>
             <div className='search-box'>
-                <SearchBox panTo={panTo} />
+                <SearchBox
+                    panTo={panTo}
+                    getBeaches={getBeaches}
+                />
             </div>
             <NavBar />
 
             <GoogleMap
                 mapContainerStyle={mapContainerStyle}
-                zoom={8}
+                zoom={10}
                 center={center}
                 options={options}
-                onClick={(e) => {
-                    setMarkers(current => [...current, {
-                        lat: e.latLng.lat(),
-                        lng: e.latLng.lng()
-                    }])
-                }}
+                // onClick={(e) => {
+                //     setMarkers(current => [...current, {
+                //         lat: e.latLng.lat(),
+                //         lng: e.latLng.lng()
+                //     }])
+                // }}
                 onLoad={onMapLoad}
             >
-                {markers.map((marker, i) => {
+                {beaches.map((beach, i) => {
                     return <Marker
                         key={i}
-                        position={{ lat: marker.lat, lng: marker.lng }}
+                        position={{ lat: beach.geometry.location.lat, lng: beach.geometry.location.lng }}
                         onClick={() => {
                             setSelected(null)
-                            setSelected(marker)
-                            // console.log(selected)
+                            setSelected(beach)
+                            panTo({ lat: beach.geometry.location.lat, lng: beach.geometry.location.lng })
                         }}
                     />
                 })}
 
-                {selected ? (<InfoWindow position={{ lat: selected.lat, lng: selected.lng }} onCloseClick={() => setSelected(null)}>
-                    <InfoContent lat={selected.lat} lng={selected.lng} />
-                </InfoWindow>) : null}
+                {selected ? (
+                    <InfoWindow position={{ lat: selected.geometry.location.lat, lng: selected.geometry.location.lng }} onCloseClick={() => setSelected(null)}>
+                        <InfoContent
+                            lat={selected.geometry.location.lat}
+                            lng={selected.geometry.location.lng}
+                            name={selected.name}
+                            rating={selected.rating}
+                        />
+                    </InfoWindow>) : null}
             </GoogleMap>
-
+            <button onClick={() => getBeaches(mapRef.current.center.lat(), mapRef.current.center.lng())}>load beaches</button>
         </div>
     )
 }

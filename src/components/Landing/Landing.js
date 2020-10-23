@@ -2,6 +2,8 @@ import React, {useState} from 'react'
 import { connect } from 'react-redux'
 import {withRouter} from 'react-router-dom'
 import NavBar from '../NavBar/NavBar'
+import Login from './Login'
+import Register from './Register'
 
 
 function Landing(props) {
@@ -54,11 +56,11 @@ function Landing(props) {
             <div className='input-box-area'>
                 
                 {showLogin && <div>
-                    login
+                    <Login hideAll={hideAll} />
                 </div>}
 
                 {showRegister && <div>
-                    register
+                    <Register hideAll={hideAll} />
                 </div>}
 
             </div>

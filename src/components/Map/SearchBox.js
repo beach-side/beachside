@@ -29,6 +29,7 @@ function SearchBox(props) {
         try {
             const result = await getGeocode({ address })
             const { lat, lng } = await getLatLng(result[0])
+            await props.getBeaches(lat, lng)
             props.panTo({ lat, lng })
         } catch (error) {
             console.log('error')
@@ -38,7 +39,7 @@ function SearchBox(props) {
             value={value}
             onChange={(e) => { setValue(e.target.value) }}
             disabled={!ready}
-            placeholder='Enter and address'
+            placeholder='Enter An Address'
         />
         <ComboboxPopover>
             {status === 'OK' && data.map(({ id, description }) =>
