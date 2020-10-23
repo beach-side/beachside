@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
-import {useHistory, withRouter} from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 import {setUser} from '../../ducks/authReducer'
 import Landing from './Landing'
 
@@ -10,6 +10,12 @@ function Login(props) {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
+    const resetFields = () => {
+        setEmail('')
+        setPassword('')
+        
+    }
     
 
     return (
@@ -36,7 +42,8 @@ function Login(props) {
                         axios.post('/api/auth/login', {email, password}).then((res) => {
                             props.setUser(res.data)
                             props.history.push('/favorites')
-                        })
+                        }).catch((e) => {alert('Email or Password does not match. Please try again.')})
+                        resetFields()
                     }}> Login </button>
                 </div>
 
