@@ -47,7 +47,7 @@ function Map() {
 
     const panTo = useCallback(({ lat, lng }) => {
         mapRef.current.panTo({ lat, lng })
-        mapRef.current.setZoom(8)
+        mapRef.current.setZoom(10)
     }, [])
 
     const getBeaches = (lat, lng) => {
@@ -73,7 +73,7 @@ function Map() {
 
             <GoogleMap
                 mapContainerStyle={mapContainerStyle}
-                zoom={8}
+                zoom={10}
                 center={center}
                 options={options}
                 // onClick={(e) => {
@@ -91,6 +91,7 @@ function Map() {
                         onClick={() => {
                             setSelected(null)
                             setSelected(beach)
+                            panTo({ lat: beach.geometry.location.lat, lng: beach.geometry.location.lng })
                         }}
                     />
                 })}
