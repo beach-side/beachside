@@ -92,12 +92,7 @@ function Map() {
                         position={{ lat: beach.geometry.location.lat, lng: beach.geometry.location.lng }}
                         onClick={() => {
                             setSelected(null)
-<<<<<<< HEAD
                             setSelected(beach)
-=======
-                            setSelected(marker)
-                            // console.log(selected)
->>>>>>> main
                         }}
                     />
                 })}
@@ -112,12 +107,8 @@ function Map() {
                         />
                     </InfoWindow>) : null}
             </GoogleMap>
-<<<<<<< HEAD
             <button onClick={() => getBeaches(mapRef.current.center.lat(), mapRef.current.center.lng())}>load beaches</button>
-=======
-
->>>>>>> main
-        </div>
+        </div >
     )
 }
 
