@@ -7,6 +7,7 @@ const profileCtrl = require('./controllers/profileController')
 const weatherCtrl = require('./controllers/weatherController.js')
 const stormCtrl = require('./controllers/stormglassController')
 const beachCtrl = require('./controllers/beachesController')
+const timezoneCtrl = require('./controllers/timezoneController')
 
 const app = express()
 const { CONNECTION_STRING, SERVER_PORT, SESSION_SECRET } = process.env
@@ -40,6 +41,9 @@ app.get('/api/storm/weather', stormCtrl.getWeather)
 
 //*Nearby Beaches
 app.get('/api/beaches', beachCtrl.getBeaches)
+
+//* TimeZone requests
+app.get('/api/timezone', timezoneCtrl.getTimezone)
 
 massive({
   connectionString: CONNECTION_STRING,
