@@ -11,7 +11,6 @@ function Favorites(props) {
   const [favoritesList, setFavoritesList] = useState([])
 
   useEffect(() => {
-    console.log('hit')
     axios.get('/api/auth/getUser').then((res) => {
       axios.get(`/api/users/${res.data.id}/favorites`).then((res) => {
         setFavoritesList(res.data)
@@ -28,7 +27,6 @@ function Favorites(props) {
     <div>
       <NavBar />
       {favoritesList.map((element, index) => {
-        console.log(element.id)
         return (
           <div>
             <Favorite

@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+const { DateTime } = require('luxon')
 
 function FavoriteModal(props) {
 
   const [tide, setTide] = useState([])
 
+  const dateTimeFromAPI = DateTime.fromISO('2020-10-30T15:59:00+00:00')
+  const dateTimeInLocal = dateTimeFromAPI.setZone('local')
+
+
   useEffect(() => {
-    console.log(props)
-    console.log(props.lat)
-    axios.get(`/api/storm/tides?lat=${props.lat}&lng=${props.lng}`)
+    console.log(dateTimeInLocal)
+
+    axios.get(`/api/storm/tides?lat=${props.lat}&lng=${props.lng}&offset=${props.timezone}`)
       .then((res) => {
         console.log(res.data)
         setTide(res.data)
