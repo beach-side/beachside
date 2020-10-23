@@ -13,8 +13,7 @@ function Login(props) {
 
     const resetFields = () => {
         setEmail('')
-        setPassword('')
-        
+        setPassword('')   
     }
     
 
