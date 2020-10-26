@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import {setUser} from '../../ducks/authReducer'
 import { connect } from 'react-redux'
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import Landing from './Landing'
 
 class Register extends Component {
@@ -11,6 +11,7 @@ class Register extends Component {
     this.state = {
       email: '',
       password: '',
+      confirmPassword: '',
     }
   }
 
@@ -21,16 +22,22 @@ class Register extends Component {
   }
 
   handleRegister = () => {
-    const { email, password } = this.state
-    axios
-      .post('/api/auth/register', { email, password })
+    const { email, password, confirmPassword } = this.state
+
+    if (password !== confirmPassword) {
+      alert('Passwords do not match. Please re-enter your information to register.')
+    } else {
+      axios.post('/api/auth/register', { email, password })
       .then((res) => {
         this.props.setUser(res.data)
         this.props.history.push('/beachmap')
+        
       })
       .catch((err) => {
         alert(err.message)
       })
+    }
+    this.setState({email: '', password: '', confirmPassword: ''})
   }
 
   render(props) {
@@ -44,6 +51,7 @@ class Register extends Component {
                 maxLength="100"
                 placeholder="Enter Email"
                 name="email"
+                value={this.state.email}
                 onChange={(e) => {
                   this.handleInput(e)
                 }}
@@ -53,6 +61,17 @@ class Register extends Component {
                 maxLength="20"
                 placeholder="Enter Password"
                 name="password"
+                value={this.state.password}
+                onChange={(e) => {
+                  this.handleInput(e)
+                }}
+              />
+              <input
+                type="password"
+                maxLength="20"
+                placeholder="Confirm Password"
+                name="confirmPassword"
+                value={this.state.confirmPassword}
                 onChange={(e) => {
                   this.handleInput(e)
                 }}
@@ -68,14 +87,11 @@ class Register extends Component {
             </button>
           </div>
           <div className="flex-horizontal link">
-          <button className='cancel-button'
-                    onClick={() => {this.props.hideAll()}}>
-                        Cancel
-                    </button>
-            {/* <span>Login </span> */}
-            <Link className="input-container-button" to="/">
-              Login
-            </Link>
+            <button className='cancel-button'
+                onClick={() => {this.props.hideAll()}}>
+                  Cancel
+            </button>
+            
           </div>
         </div>
       </div>
