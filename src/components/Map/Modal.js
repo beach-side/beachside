@@ -6,6 +6,7 @@ import { withRouter, useHistory } from 'react-router-dom'
 
 function Modal(props) {
     const [tide, setTide] = useState([])
+    const [noTide, setNoTide] = useState(null)
     const [weatherInfo, setWeatherInfo] = useState([])
 
     useEffect(() => {
@@ -16,7 +17,8 @@ function Modal(props) {
         axios.get(`/api/storm/weather?lat=${props.lat}&lng=${props.lng}`)
             .then((res) => {
                 setWeatherInfo(res.data)
-            })
+
+            }).catch(err => console.log(err.message))
     }, [])
 
     return (
@@ -30,7 +32,7 @@ function Modal(props) {
                     </div>
                 )
             })}
-            {weatherInfo.map((element, index) => {
+            { weatherInfo ? weatherInfo.map((element, index) => {
                 return (
                     <div key={index}>
                         <h3>SwellDirection: {element.swellDirection} Degrees</h3>
@@ -40,7 +42,7 @@ function Modal(props) {
                         <h3>WaveHeight: {element.waveHeight}Feet</h3>
                     </div>
                 )
-            })}
+            }) : <div>No swell information available</div>}
         </div >
     )
 }
