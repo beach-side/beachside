@@ -35,7 +35,7 @@ module.exports = {
     const { lat, lng } = req.query
     let dataArray = []
     let timeData = await getTimezoneInfo.getTimezoneInfo(lat, lng)
-    console.log(timeData)
+    // console.log(timeData)
 
     const start = convertToLocalTime(timeData.timeZoneId)
 
@@ -149,7 +149,7 @@ module.exports = {
           }
           dataArray.push(data)
           // }
-        })
+        }).catch(err => console.log(err.message))
       })
     } else {
       await axios.get(`https://api.stormglass.io/v2/weather/point?lat=${lat}&lng=${lng}&params=${params}&start=${start}&end=${end}`, {
@@ -167,7 +167,10 @@ module.exports = {
           waveHeight: (waveHeight.noaa * 3.281).toFixed(2)
         }
         dataArray.push(data)
-      }).catch((err) => console.log(err))
+      }).catch((err) => {
+        console.log(err)
+
+      })
     }
     res.status(200).send(dataArray)
     console.log(counter, counterTwo, counterThree, counterFour)

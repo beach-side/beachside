@@ -1,8 +1,8 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
-import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
-import {setUser} from '../../ducks/authReducer'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
+import { setUser } from '../../ducks/authReducer'
 import Landing from './Landing'
 
 
@@ -13,37 +13,37 @@ function Login(props) {
 
     const resetFields = () => {
         setEmail('')
-        setPassword('')   
+        setPassword('')
     }
-    
+
 
     return (
-        <div className='landing'> 
+        <div className='landing'>
 
             <div className='login-view'>
-                
+
                 <div>
                     <input className='email-input' placeholder={'email'} value={email}
-                    onChange={(e) => {setEmail(e.target.value)}} />
-                    
+                        onChange={(e) => { setEmail(e.target.value) }} />
+
                     <input className='password-input' type='password' placeholder={'password'} value={password}
-                    onChange={(e) => {setPassword(e.target.value)}} />
+                        onChange={(e) => { setPassword(e.target.value) }} />
                 </div>
 
                 <div className='login-view-buttons'>
                     <button className='cancel-button'
-                    onClick={() => {props.hideAll()}}>
+                        onClick={() => { props.hideAll() }}>
                         Cancel
                     </button>
 
                     <button className='login-button'
-                    onClick={() => {
-                        axios.post('/api/auth/login', {email, password}).then((res) => {
-                            props.setUser(res.data)
-                            props.history.push('/favorites')
-                        }).catch((e) => {alert('Email or Password does not match. Please try again.')})
-                        resetFields()
-                    }}> Login </button>
+                        onClick={() => {
+                            axios.post('/api/auth/login', { email, password }).then((res) => {
+                                props.setUser(res.data)
+                                // props.history.push('/favorites')
+                            }).catch((e) => { alert('Email or Password does not match. Please try again.') })
+                            resetFields()
+                        }}> Login </button>
                 </div>
 
             </div>
@@ -54,4 +54,4 @@ function Login(props) {
     )
 }
 
-export default connect(null, {setUser})(withRouter(Login))
+export default connect(null, { setUser })(withRouter(Login))

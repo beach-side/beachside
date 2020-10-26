@@ -3,6 +3,7 @@ import InfoContent from './InfoContent'
 import SearchBox from './SearchBox'
 import './map.css'
 import NavBar from '../NavBar/NavBar'
+import Locate from './Locate'
 import {
     GoogleMap,
     useLoadScript,
@@ -35,14 +36,31 @@ function Map() {
         libraries,
     })
 
+
     const [beaches, setBeaches] = useState([])
     const [selected, setSelected] = useState(null)
+    const [userSaved, setUserSaved] = useState([])
+    const [userid, setUserid] = useState('')
+
+
+    useEffect(() => {
+        Axios.get('/api/auth/getUser').then((res) => {
+            setUserid(res.data.id)
+
+        }).catch(() => {
+
+        })
+
+
+
+    }, [])
 
 
     const mapRef = useRef();
 
     const onMapLoad = useCallback((map) => {
         mapRef.current = map;
+        // console.log(mapRef)
     }, [])
 
     const panTo = useCallback(({ lat, lng }) => {
@@ -51,6 +69,7 @@ function Map() {
     }, [])
 
     const getBeaches = (lat, lng) => {
+        setBeaches([])
         Axios.get(`/api/beaches?lat=${lat}&lng=${lng}`).then(res => {
             setBeaches(res.data)
         })
@@ -99,6 +118,8 @@ function Map() {
                 {selected ? (
                     <InfoWindow position={{ lat: selected.geometry.location.lat, lng: selected.geometry.location.lng }} onCloseClick={() => setSelected(null)}>
                         <InfoContent
+
+                            userid={userid}
                             lat={selected.geometry.location.lat}
                             lng={selected.geometry.location.lng}
                             name={selected.name}
@@ -106,6 +127,7 @@ function Map() {
                         />
                     </InfoWindow>) : null}
             </GoogleMap>
+            <Locate panTo={panTo} />
             <button onClick={() => getBeaches(mapRef.current.center.lat(), mapRef.current.center.lng())}>load beaches</button>
         </div>
     )
