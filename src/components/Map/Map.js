@@ -3,6 +3,7 @@ import InfoContent from './InfoContent'
 import SearchBox from './SearchBox'
 import './map.css'
 import NavBar from '../NavBar/NavBar'
+import Locate from './Locate'
 import {
     GoogleMap,
     useLoadScript,
@@ -108,6 +109,7 @@ function Map() {
                         />
                     </InfoWindow>) : null}
             </GoogleMap>
+            <Locate panTo={panTo} />
             <button onClick={() => getBeaches(mapRef.current.center.lat(), mapRef.current.center.lng())}>load beaches</button>
         </div>
     )
