@@ -65,6 +65,11 @@ function Landing(props) {
 
             </div>
 
+            <div> 
+                <p className='website-description'> ....A description of the website.... </p>
+
+            </div>
+
         </div>
     )
 }

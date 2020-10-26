@@ -1,0 +1,13 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "styles.scss",
+        "../components/Map/__map.scss",
+        "../components/NavBar/__navbar.scss",
+        "../components/Landing/__landing.scss",
+        "../components/FavoriteBeaches/__favorites.scss"
+    ],
+    "names": [],
+    "file": "styles.css"
+}
