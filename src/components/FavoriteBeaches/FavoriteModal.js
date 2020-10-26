@@ -7,7 +7,7 @@ function FavoriteModal(props) {
   const [weatherInfo, setWeatherInfo] = useState([])
 
   useEffect(() => {
-    axios.get(`/api/storm/tides?lat=${props.lat}&lng=${props.lng}&offset=${props.timeInfo.timeZoneId}`)
+    axios.get(`/api/storm/tides?lat=${props.lat}&lng=${props.lng}`)
       .then((res) => {
         setTide(res.data)
       })

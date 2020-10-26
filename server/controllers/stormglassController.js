@@ -4,7 +4,6 @@ const { STORMGLASS_API_KEY_1, STORMGLASS_API_KEY_2, STORMGLASS_API_KEY_3, STORMG
 const getTimezoneInfo = require('./GetTimezoneFunction')
 
 
-
 let counter = 0
 let counterTwo = 0
 let counterThree = 0
@@ -26,7 +25,6 @@ function convertToLocalTime(offsetZone) {
 
   const time = DateTime.local()
   const offset = offsetZone
-
   const now = DateTime.fromISO(time).setZone(offset)
   let newTime = now.ts
   return newTime.toString().split('').slice(0, -3).join('')
@@ -34,10 +32,15 @@ function convertToLocalTime(offsetZone) {
 
 module.exports = {
   getTides: async (req, res) => {
-    const { lat, lng, offset } = req.query
+    const { lat, lng } = req.query
     let dataArray = []
+    let timeData = await getTimezoneInfo.getTimezoneInfo(lat, lng)
+    console.log(timeData)
+
+    const start = convertToLocalTime(timeData.timeZoneId)
+
     if (counter <= 50) {
-      await axios.get(`https://api.stormglass.io/v2/tide/extremes/point?lat=${lat}&lng=${lng}`, {
+      await axios.get(`https://api.stormglass.io/v2/tide/extremes/point?lat=${lat}&lng=${lng}&start=${start}`, {
         headers: {
           'Authorization': STORMGLASS_API_KEY_1
         }
@@ -45,16 +48,15 @@ module.exports = {
         counter = res.data.meta.requestCount
         for (let i = 0; i < 5; i++) {
           let tideObj = res.data.data[i]
-          let time = convertToLocal(tideObj.time, offset)
           const dataObj = {
             height: (tideObj.height * 3.281).toFixed(2),
-            time: time,
+            time: convertToLocal(tideObj.time, timeData.timeZoneId),
             type: tideObj.type
           }
           dataArray.push(dataObj)
         }
       }).catch(async (err) => {
-        await axios.get(`https://api.stormglass.io/v2/tide/extremes/point?lat=${lat}&lng=${lng}`, {
+        await axios.get(`https://api.stormglass.io/v2/tide/extremes/point?lat=${lat}&lng=${lng}&start=${start}`, {
           headers: {
             'Authorization': STORMGLASS_API_KEY_2
           }
@@ -65,13 +67,11 @@ module.exports = {
             counterTwo = res.data.meta.requestCount
             counter = 50
           }
-
           for (let i = 0; i < 5; i++) {
             let tideObj = res.data.data[i]
-            let time = convertToLocal(tideObj.time, offset)
             const dataObj = {
               height: (tideObj.height * 3.281).toFixed(2),
-              time: time,
+              time: convertToLocal(tideObj.time, timeData.timeZoneId),
               type: tideObj.type
             }
             dataArray.push(dataObj)
@@ -79,7 +79,7 @@ module.exports = {
         })
       })
     } else {
-      await axios.get(`https://api.stormglass.io/v2/tide/extremes/point?lat=${lat}&lng=${lng}`, {
+      await axios.get(`https://api.stormglass.io/v2/tide/extremes/point?lat=${lat}&lng=${lng}&start=${start}`, {
         headers: {
           'Authorization': STORMGLASS_API_KEY_2
         }
@@ -87,10 +87,9 @@ module.exports = {
         counterTwo = res.data.meta.requestCount
         for (let i = 0; i < 5; i++) {
           let tideObj = res.data.data[i]
-          let time = convertToLocal(tideObj.time, offset)
           const dataObj = {
             height: (tideObj.height * 3.281).toFixed(2),
-            time: time,
+            time: convertToLocal(tideObj.time, timeData.timeZoneId),
             type: tideObj.type
           }
           dataArray.push(dataObj)
