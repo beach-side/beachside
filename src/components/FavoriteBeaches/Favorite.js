@@ -7,19 +7,17 @@ function Favorite(props) {
   const [favoritesList, setFavoritesList] = useState({})
   const [data, setData] = useState({})
   const [modal, setModal] = useState(false)
-  const [timeInfo, setTimeInfo] = useState({})
+
 
   useEffect(() => {
     setFavoritesList(props.data)
     axios.get(`/api/weather?lat=${props.data.lat}&lng=${props.data.lng}`,).then(res => {
       setData(res.data)
     })
-    axios.get(`/api/timezone?lat=${props.data.lat}&lng=${props.data.lng}`).then((res) => {
-      setTimeInfo(res.data)
-    })
+
   }, [])
 
-  const { condition, icon, sunrise, sunset, temperature, wind, timezone } = data
+  const { condition, icon, sunrise, sunset, temperature, wind } = data
 
   return (
     <div>
@@ -29,7 +27,7 @@ function Favorite(props) {
       <img src={icon} alt='weather' />
       <p>{condition}</p>
       <button onClick={() => setModal(true)}>Tide Request</button>
-      {modal === true && <FavoriteModal setModal={setModal} lat={props.data.lat} lng={props.data.lng} timezone={timezone} timeInfo={timeInfo} />}
+      {modal === true && <FavoriteModal setModal={setModal} lat={props.data.lat} lng={props.data.lng} />}
     </div>
   )
 }
