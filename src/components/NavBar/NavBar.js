@@ -15,6 +15,7 @@ function NavBar(props) {
 
                 </a>
 
+                //! Needs to not display if no user logged in
                 <div className='nav-links'>
                     <a className='favorites-link'
                         onClick={() => { props.history.push('/favorites') }}> Favorites </a>
