@@ -3,15 +3,17 @@ import React from 'react';
 import './App.css';
 //routes below links all views in routes.js
 import routes from './routes'
+import NavBar from './components/NavBar/NavBar'
+import { withRouter } from 'react-router-dom'
 
-function App() {
+function App(props) {
   return (
     <div className="App">
-
+      {props.location.pathname !== '/' ? <NavBar /> : null}
       {routes}
 
     </div>
   );
 }
 
-export default App;
+export default withRouter(App);

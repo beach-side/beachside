@@ -1,20 +1,23 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import FavoriteModal from './FavoriteModal'
+import { getZipCode } from 'use-places-autocomplete'
 
 function Favorite(props) {
   const [favoritesList, setFavoritesList] = useState({})
   const [data, setData] = useState({})
   const [modal, setModal] = useState(false)
 
+
   useEffect(() => {
     setFavoritesList(props.data)
     axios.get(`/api/weather?lat=${props.data.lat}&lng=${props.data.lng}`,).then(res => {
       setData(res.data)
     })
+
   }, [])
 
-  const { condition, icon, sunrise, sunset, temperature, wind, timezone } = data
+  const { condition, icon, sunrise, sunset, temperature, wind } = data
 
   return (
     <div>
@@ -24,7 +27,7 @@ function Favorite(props) {
       <img src={icon} alt='weather' />
       <p>{condition}</p>
       <button onClick={() => setModal(true)}>Tide Request</button>
-      {modal === true && <FavoriteModal setModal={setModal} lat={props.data.lat} lng={props.data.lng} timezone={timezone} />}
+      {modal === true && <FavoriteModal setModal={setModal} lat={props.data.lat} lng={props.data.lng} />}
     </div>
   )
 }
