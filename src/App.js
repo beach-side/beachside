@@ -1,6 +1,7 @@
 import React from 'react';
 // import Map from './components/Map/Map'
-import './App.css';
+import './sass/styles.css';
+import './sass/reset.css'
 //routes below links all views in routes.js
 import routes from './routes'
 import NavBar from './components/NavBar/NavBar'

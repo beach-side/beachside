@@ -18,8 +18,8 @@ const mapContainerStyle = {
     height: '100vh'
 }
 const center = {
-    lat: 40.297119,
-    lng: -111.695007
+    lat: 39,
+    lng: -98
 }
 const options = {
     disableDefaultUI: true,
@@ -60,6 +60,20 @@ function Map() {
 
     const onMapLoad = useCallback((map) => {
         mapRef.current = map;
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                panTo({
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                })
+            },
+            (error) => {
+                panTo({
+                    lat: 39,
+                    lng: -98
+                })
+                mapRef.current.setZoom(5)
+            })
         // console.log(mapRef)
     }, [])
 
