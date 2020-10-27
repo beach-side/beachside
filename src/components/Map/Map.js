@@ -2,8 +2,8 @@ import React, { useEffect, useState, useRef, useCallback } from 'react'
 import InfoContent from './InfoContent'
 import SearchBox from './SearchBox'
 import './map.css'
-import NavBar from '../NavBar/NavBar'
 import Locate from './Locate'
+import { FaUmbrellaBeach } from 'react-icons/fa'
 import {
     GoogleMap,
     useLoadScript,
@@ -110,8 +110,11 @@ function Map() {
                         onClick={() => {
                             setSelected(null)
                             setSelected(beach)
-                            panTo({ lat: beach.geometry.location.lat, lng: beach.geometry.location.lng })
+
                         }}
+                        icon={<FaUmbrellaBeach />}
+
+
                     />
                 })}
 
@@ -128,6 +131,7 @@ function Map() {
                     </InfoWindow>) : null}
             </GoogleMap>
             <Locate panTo={panTo} />
+
             <button onClick={() => getBeaches(mapRef.current.center.lat(), mapRef.current.center.lng())}>load beaches</button>
         </div>
     )
