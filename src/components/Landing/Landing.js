@@ -1,7 +1,6 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import {withRouter} from 'react-router-dom'
-import NavBar from '../NavBar/NavBar'
+import { withRouter } from 'react-router-dom'
 import Login from './Login'
 import Register from './Register'
 
@@ -25,28 +24,27 @@ function Landing(props) {
         setShowLogin(false)
         setShowRegister(true)
     }
-    
+
 
     return (
-        <div className='landing'> 
+        <div className='landing'>
 
-            <NavBar />
 
             <div className='nav-to-map-div'>
                 <button className='nav-to-map-button'
-                    onClick={() => {props.history.push('/beachmap')}}>
+                    onClick={() => { props.history.push('/beachmap') }}>
                     Search For Beaches
                 </button>
             </div>
 
             <div className='login-links'>
                 <button className='login-link'
-                onClick={() => {handleShowLogin()}}>
+                    onClick={() => { handleShowLogin() }}>
                     Login
                 </button>
                 <div className='create-acct-area'>
                     <button className='register-link'
-                    onClick={() => {handleShowRegister()}}>
+                        onClick={() => { handleShowRegister() }}>
                         Create An Account
                     </button>
                     <p className='register-reason'> to view saved locations </p>
@@ -54,7 +52,7 @@ function Landing(props) {
             </div>
 
             <div className='input-box-area'>
-                
+
                 {showLogin && <div>
                     <Login hideAll={hideAll} />
                 </div>}
@@ -65,7 +63,7 @@ function Landing(props) {
 
             </div>
 
-            <div> 
+            <div>
                 <p className='website-description'> ....A description of the website.... </p>
 
             </div>

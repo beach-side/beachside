@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import {setUser} from '../../ducks/authReducer'
+import { setUser } from '../../ducks/authReducer'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import Landing from './Landing'
+
 
 class Register extends Component {
   constructor() {
@@ -99,10 +99,10 @@ class Register extends Component {
           </div>
           <div className="flex-horizontal link">
             <button className='cancel-button'
-                onClick={() => {this.props.hideAll()}}>
-                  Cancel
+              onClick={() => { this.props.hideAll() }}>
+              Cancel
             </button>
-            
+
           </div>
         </div>
       </div>
