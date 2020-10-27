@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import {setUser} from '../../ducks/authReducer'
+import { setUser } from '../../ducks/authReducer'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import Landing from './Landing'
+
 
 class Register extends Component {
   constructor() {
@@ -28,16 +28,16 @@ class Register extends Component {
       alert('Passwords do not match. Please re-enter your information to register.')
     } else {
       axios.post('/api/auth/register', { email, password })
-      .then((res) => {
-        this.props.setUser(res.data)
-        this.props.history.push('/beachmap')
-        
-      })
-      .catch((err) => {
-        alert(err.message)
-      })
+        .then((res) => {
+          this.props.setUser(res.data)
+          this.props.history.push('/beachmap')
+
+        })
+        .catch((err) => {
+          alert(err.message)
+        })
     }
-    this.setState({email: '', password: '', confirmPassword: ''})
+    this.setState({ email: '', password: '', confirmPassword: '' })
   }
 
   render(props) {
@@ -88,10 +88,10 @@ class Register extends Component {
           </div>
           <div className="flex-horizontal link">
             <button className='cancel-button'
-                onClick={() => {this.props.hideAll()}}>
-                  Cancel
+              onClick={() => { this.props.hideAll() }}>
+              Cancel
             </button>
-            
+
           </div>
         </div>
       </div>
