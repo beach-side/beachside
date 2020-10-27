@@ -1,4 +1,4 @@
 INSERT INTO users
-(email, hash)
-VALUES($1,$2)
-returning id, email;
+(name, email, hash)
+VALUES($1,$2,$3)
+returning id, name, email;
