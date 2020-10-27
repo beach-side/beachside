@@ -22,7 +22,7 @@ function Modal(props) {
     }, [])
 
     return (
-        <div >
+        <div className='tide-info'>
             {tide.map((element, index) => {
                 return (
                     <div key={index}>
@@ -34,7 +34,7 @@ function Modal(props) {
             })}
             { weatherInfo ? weatherInfo.map((element, index) => {
                 return (
-                    <div key={index}>
+                    <div className='swell-info' key={index}>
                         <h3>SwellDirection: {element.swellDirection} Degrees</h3>
                         <h3>SwellHeight:{element.swellHeight} Feet</h3>
                         <h3>Swellperiod: {element.swellPeriod} Seconds</h3>
