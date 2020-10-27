@@ -88,7 +88,7 @@ function Map() {
                     getBeaches={getBeaches}
                 />
             </div>
-            <NavBar />
+
 
             <GoogleMap
                 mapContainerStyle={mapContainerStyle}
