@@ -4,7 +4,7 @@ import { setUser, logoutUser } from '../../ducks/authReducer'
 import { withRouter, } from 'react-router-dom'
 
 function NavBar(props) {
-    console.log('props for greeting', props)
+    
     return (
         <div className='header'>
 
@@ -16,20 +16,19 @@ function NavBar(props) {
 
                 </a>
 
-                {/* Needs to not display if no user logged */}
+                {/* Needs to not display if no user logged in */}
                 <div className='nav-links'>
-                    <a className='favorites-link'
-                        onClick={() => { props.history.push('/favorites') }}> Favorites </a>
-
                     <a className='map-link'
                         onClick={() => { props.history.push('/beachmap') }}> Map </a>
+
+                    { props.user && 
+                    <a className='favorites-link'
+                        onClick={() => { props.history.push('/favorites') }}> Favorites </a>
+                        }
                 </div>
             </div>
 
             <div className='right-side-links'>
-
-                {/* NEED TO TEST props.user BELOW AND ENSURE USER DATA IS
-                CONSISTENT WITH BACKEND AND PULLS CORRECTLY */}
                 <p className='greeting'> { props.user && `Welcome, ${props.user.name}!` } </p>
 
                 {/* logout button works if props.history.push stays */}
