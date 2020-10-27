@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { setUser, logoutUser } from '../../ducks/authReducer'
-import { withRouter, useHistory } from 'react-router-dom'
+import { withRouter, } from 'react-router-dom'
 
 function NavBar(props) {
+    console.log('props for greeting', props)
     return (
         <div className='header'>
 
@@ -26,12 +27,12 @@ function NavBar(props) {
             </div>
 
             <div className='right-side-links'>
+
                 {/* NEED TO TEST props.user BELOW AND ENSURE USER DATA IS
                 CONSISTENT WITH BACKEND AND PULLS CORRECTLY */}
-                <p className='greeting'>
-                    {props.user ? `Welcome, ${props.user.email}!` : 'greeting'} </p>
+                <p className='greeting'> { props.user && `Welcome, ${props.user.name}!` } </p>
 
-                {/* NEED TO TEST BELOW AFTER DUMMY USER DATA IS CREATED - KARA/BRAD 10/20 */}
+                {/* logout button works if props.history.push stays */}
                 <a className='logout-link' onClick={() => {
                     props.logoutUser()
                     props.history.push('/')
@@ -42,5 +43,5 @@ function NavBar(props) {
     )
 }
 
-const mapStateToProps = (store) => store.authReducer
+const mapStateToProps = (reduxState) => reduxState
 export default connect(mapStateToProps, { setUser, logoutUser })(withRouter(NavBar))
