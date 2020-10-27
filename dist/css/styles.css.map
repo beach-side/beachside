@@ -1,0 +1,13 @@
+{
+    "version": 3,
+    "mappings": "AEAA,AAAA,oBAAoB,CAAC;EACjB,gBAAgB,EAAE,GAAG;CAExB",
+    "sources": [
+        "../../src/sass/styles.scss",
+        "../../src/components/Map/__map.scss",
+        "../../src/components/NavBar/__navbar.scss",
+        "../../src/components/Landing/__landing.scss",
+        "../../src/components/FavoriteBeaches/__favorites.scss"
+    ],
+    "names": [],
+    "file": "styles.css"
+}

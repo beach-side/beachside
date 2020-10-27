@@ -9,6 +9,7 @@ class Register extends Component {
   constructor() {
     super()
     this.state = {
+      name: '',
       email: '',
       password: '',
       confirmPassword: '',
@@ -22,12 +23,12 @@ class Register extends Component {
   }
 
   handleRegister = () => {
-    const { email, password, confirmPassword } = this.state
+    const { name, email, password, confirmPassword } = this.state
 
     if (password !== confirmPassword) {
       alert('Passwords do not match. Please re-enter your information to register.')
     } else {
-      axios.post('/api/auth/register', { email, password })
+      axios.post('/api/auth/register', { name, email, password })
       .then((res) => {
         this.props.setUser(res.data)
         this.props.history.push('/beachmap')
@@ -37,7 +38,7 @@ class Register extends Component {
         alert(err.message)
       })
     }
-    this.setState({email: '', password: '', confirmPassword: ''})
+    this.setState({name: '', email: '', password: '', confirmPassword: ''})
   }
 
   render(props) {
@@ -46,6 +47,16 @@ class Register extends Component {
         <div className="input-container">
           <div className="flex-horizontal inputs">
             <div className="flex-vertical">
+            <input
+                input type="name"
+                maxLength="65"
+                placeholder="Enter Surfer's Name"
+                name="name"
+                value={this.state.name}
+                onChange={(e) => {
+                  this.handleInput(e)
+                }}
+              />
               <input
                 input type="email"
                 maxLength="100"
