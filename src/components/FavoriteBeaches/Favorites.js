@@ -25,7 +25,7 @@ function Favorites(props) {
 
   return (
     <div>
-      <NavBar />
+
       {favoritesList.map((element, index) => {
         return (
           <div>
