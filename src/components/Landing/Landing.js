@@ -30,8 +30,6 @@ function Landing(props) {
     return (
         <div className='landing'> 
 
-            <NavBar />
-
             <div className='nav-to-map-div'>
                 <button className='nav-to-map-button'
                     onClick={() => {props.history.push('/beachmap')}}>
