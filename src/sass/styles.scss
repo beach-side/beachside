@@ -1,13 +1,13 @@
-// @import '../components/Map/_map';
-// @import '../components/NavBar/_navbar';
-// @import '../components/Landing/_landing';
-// @import '../components/FavoriteBeaches/_favorites'
+@import '../components/Map/_map';
+@import '../components/NavBar/_navbar';
+@import '../components/Landing/_landing';
+@import '../components/FavoriteBeaches/_favorites';
 
 
 .header {
     //background-color: red;
-    height:8vh;
-    width:100%;
+    height: 8vh;
+    width: 100%;
 }
 
 .nav-links { //link to Map 

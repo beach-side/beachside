@@ -57,7 +57,10 @@ function InfoContent(props) {
         <div className='info-content'>
             <h1>{props.name}</h1>
             <div className='weather-info'>
-                <h2>{temperature} °F</h2>
+                <div>
+                    <h2>{temperature} °F</h2>
+                    <p>{condition}</p>
+                </div>
                 <img src={icon} alt='weather' />
             </div>
             <div className='time'>
@@ -67,7 +70,6 @@ function InfoContent(props) {
             <div>
 
             </div>
-            <p>{condition}</p>
             <button onClick={() => setModal(true)}>Surf Details</button>
             {props.userid ?
                 !max ?

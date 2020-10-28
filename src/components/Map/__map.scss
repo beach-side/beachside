@@ -1,24 +1,90 @@
 .search-box {
     position: absolute;
-    top: 1rem;
+    top: 12vh;
     left: 50%;
     transform: translate(-50%);
     width: 100%;
     max-width: 400px;
     z-index: 10;
     margin: auto auto;
+   input {
+    height: 50px;
+    width: 350px;
+    font-size: 25px;
+    border-radius: 15px;
+    padding: 5px 10px;
+    outline: none;
+    border: 3px solid #6990b4;
+    outline: none;
+   }
+   
 }
 .compass-btn {
     position: absolute;
     border-radius: 5px;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
-    background-color: #6990b4;
+    // background-color: #6990b4;
     padding: 2px 2px;
     z-index: 10;
     display: flex;
-    font-size: 50px;
-    top: 30vh;
-    left: 15vw;
+    font-size: 45px;
+    top: 10vh;
+    right: 10px;
     justify-content: center;
     align-items: center;
+    border: none;
+    outline: none;
+    color: rgb(83, 80, 80);
+}
+
+.load-beaches {
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
+    max-width: 250px;
+    z-index: 10;
+    left: 50%;
+    transform: translate(-50%);
+    margin: auto auto;
+    font-size: 25px;
+    padding: 5px 10px;
+    text-transform: uppercase;
+    background-color: #d16f2d;
+    color: #19303f;
+    font-weight: bold;;
+    border-radius: 15px;
+    box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.75);
+    outline: none;
+    :hover{
+        cursor: pointer;
+    }
+}
+
+.info-content {
+    max-height: 500px;
+    max-width: 300px;
+    text-align: center;
+    h1{
+        font-size: 35px;
+        font-weight: bold;
+    }
+    .weather-info{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        background-color: #6990b4;
+        padding-left: 15px;
+        font-size: 25px;
+        text-transform: uppercase;
+        border-radius: 5px;
+        margin: 15px auto;
+        width: 90%;
+        box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.75);
+        font-weight: bold;
+        p{
+            margin-top: 5px;
+            font-size: 20px;
+        }
+
+    }
 }

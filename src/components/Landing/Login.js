@@ -40,7 +40,7 @@ function Login(props) {
                         onClick={() => {
                             axios.post('/api/auth/login', { email, password }).then((res) => {
                                 props.setUser(res.data)
-                                // props.history.push('/favorites')
+                                props.history.push('/favorites')
                                 props.hideAll()
                             }).catch((e) => { alert('Email or Password does not match. Please try again.') })
                             resetFields()

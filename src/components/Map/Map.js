@@ -96,12 +96,13 @@ function Map() {
 
     return (
         <div>
-            <div className='search-box'>
-                <SearchBox
-                    panTo={panTo}
-                    getBeaches={getBeaches}
-                />
-            </div>
+
+            <SearchBox
+                className='search-input'
+                panTo={panTo}
+                getBeaches={getBeaches}
+            />
+
 
 
             <GoogleMap
@@ -127,8 +128,6 @@ function Map() {
 
                         }}
                         icon={<FaUmbrellaBeach />}
-
-
                     />
                 })}
 
@@ -146,7 +145,7 @@ function Map() {
             </GoogleMap>
             <Locate panTo={panTo} />
 
-            <button onClick={() => getBeaches(mapRef.current.center.lat(), mapRef.current.center.lng())}>load beaches</button>
+            <button className='load-beaches' onClick={() => getBeaches(mapRef.current.center.lat(), mapRef.current.center.lng())}>load beaches</button>
         </div>
     )
 }

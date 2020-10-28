@@ -23,30 +23,36 @@ function SearchBox(props) {
             radius: 20 * 1069.34,
         },
     })
-    return <Combobox onSelect={async (address) => {
-        setValue(address, false)
-        clearSuggestions()
-        try {
-            const result = await getGeocode({ address })
-            const { lat, lng } = await getLatLng(result[0])
-            await props.getBeaches(lat, lng)
-            props.panTo({ lat, lng })
-        } catch (error) {
-            console.log('error')
-        }
-    }}>
-        <ComboboxInput
-            value={value}
-            onChange={(e) => { setValue(e.target.value) }}
-            disabled={!ready}
-            placeholder='Enter An Address'
-        />
-        <ComboboxPopover>
-            {status === 'OK' && data.map(({ id, description }) =>
-                <ComboboxOption key={id} value={description} />
-            )}
-        </ComboboxPopover>
-    </Combobox>
+    return (
+        <div className='search-box'>
+            <Combobox onSelect={async (address) => {
+                setValue(address, false)
+                clearSuggestions()
+                try {
+                    const result = await getGeocode({ address })
+                    const { lat, lng } = await getLatLng(result[0])
+                    await props.getBeaches(lat, lng)
+                    props.panTo({ lat, lng })
+                } catch (error) {
+                    console.log('error')
+                }
+            }}>
+                <ComboboxInput
+                    value={value}
+                    onChange={(e) => { setValue(e.target.value) }}
+                    disabled={!ready}
+                    placeholder='Enter city or Beach name...'
+                />
+                <ComboboxPopover style={{ borderRadius: "15px" }}>
+                    <ComboboxList style={{ fontSize: "25px" }}>
+                        {status === 'OK' && data.map(({ id, description }) =>
+                            <ComboboxOption key={id} value={description} />
+                        )}
+                    </ComboboxList>
+                </ComboboxPopover>
+            </Combobox>
+        </div >
+    )
 }
 
 export default SearchBox
