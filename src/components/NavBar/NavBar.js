@@ -12,7 +12,7 @@ function NavBar(props) {
 
                 <a className='beachside-logo-link'
                     onClick={() => { props.history.push('/') }} >
-                    <img src={require('../../assets/beachsidelogo.jpg')} height='10%' width='10%' />
+                    <img src={require('../../assets/beachsidelogo.jpg')} height='50%' width='50%' />
 
                 </a>
 
