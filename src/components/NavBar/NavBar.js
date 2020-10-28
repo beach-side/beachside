@@ -16,11 +16,11 @@ function NavBar(props) {
 
                 </a>
 
-                {/* Needs to not display if no user logged in */}
                 <div className='nav-links'>
                     <a className='map-link'
                         onClick={() => { props.history.push('/beachmap') }}> Map </a>
-
+                        
+                    {/* Link below set up to only show if user is on session */}
                     { props.user && 
                     <a className='favorites-link'
                         onClick={() => { props.history.push('/favorites') }}> Favorites </a>

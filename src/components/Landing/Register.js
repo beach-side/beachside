@@ -98,6 +98,7 @@ class Register extends Component {
             </button>
           </div>
           <div className="flex-horizontal link">
+          
             <button className='cancel-button'
               onClick={() => { this.props.hideAll() }}>
               Cancel

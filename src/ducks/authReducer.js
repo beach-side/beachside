@@ -6,7 +6,7 @@ const SET_USER = 'SET_USER'
 const LOGOUT_USER = 'LOGOUT_USER'
 
 export function setUser(payload) {
-    console.log(payload)
+    
     return {
         type: SET_USER,
         payload
