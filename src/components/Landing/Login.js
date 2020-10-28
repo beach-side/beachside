@@ -18,7 +18,7 @@ function Login(props) {
 
 
     return (
-        <div className='landing'>
+        <div className='login'>
 
             <div className='login-view'>
 
