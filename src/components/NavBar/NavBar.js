@@ -12,15 +12,15 @@ function NavBar(props) {
 
                 <a className='beachside-logo-link'
                     onClick={() => { props.history.push('/') }} >
-                    <img src={require('../../assets/beachsidelogo.jpg')} height='10%' width='10%' />
+                    <img src={require('../../assets/beachsidelogo.jpg')} height='50%' width='50%' />
 
                 </a>
 
-                {/* Needs to not display if no user logged in */}
                 <div className='nav-links'>
                     <a className='map-link'
                         onClick={() => { props.history.push('/beachmap') }}> Map </a>
-
+                        
+                    {/* Link below set up to only show if user is on session */}
                     { props.user && 
                     <a className='favorites-link'
                         onClick={() => { props.history.push('/favorites') }}> Favorites </a>
