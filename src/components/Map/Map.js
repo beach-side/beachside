@@ -15,7 +15,7 @@ import Axios from 'axios'
 const libraries = ["places"]
 const mapContainerStyle = {
     width: '100vw',
-    height: '100vh'
+    height: '92vh'
 }
 const center = {
     lat: 39,

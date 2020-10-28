@@ -52,11 +52,21 @@ function InfoContent(props) {
     }
 
     const { condition, icon, sunrise, sunset, temperature, wind, timezone } = data
+    console.log(wind)
     return (
         <div className='info-content'>
             <h1>{props.name}</h1>
-            <h2>{temperature} °F</h2>
-            <img src={icon} alt='weather' />
+            <div className='weather-info'>
+                <h2>{temperature} °F</h2>
+                <img src={icon} alt='weather' />
+            </div>
+            <div className='time'>
+                <p>{sunrise}</p>
+                <p>{sunset}</p>
+            </div>
+            <div>
+
+            </div>
             <p>{condition}</p>
             <button onClick={() => setModal(true)}>Surf Details</button>
             {props.userid ?
