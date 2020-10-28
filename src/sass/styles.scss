@@ -1,26 +1,32 @@
-// @import '../components/Map/_map';
-// @import '../components/NavBar/_navbar';
-// @import '../components/Landing/_landing';
-// @import '../components/FavoriteBeaches/_favorites'
+/* Imports for components' SCSS files */
+@import '../components/Map/_map';
+@import '../components/NavBar/_navbar';
+@import '../components/Landing/_landing';
+@import '../components/FavoriteBeaches/_favorites';
 
 
-.header {
-    //background-color: red;
-    height:8vh;
-    width:100%;
-}
+/* Imports from Google fonts */
+//font-family: 'Barlow', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300&display=swap');
 
-.nav-links { //link to Map 
-    position: absolute;
-    right: 150px;
-    top: 30px;
-}
 
-.logout-link { //logout link does not need to be visable from home screen 
-    position: absolute;
-    right: 250px;
-    top: 30px;
-}
+// .header {
+//     //background-color: red;
+//     height:8vh;
+//     width:100%;
+// }
+
+// .nav-links { //link to Map 
+//     position: absolute;
+//     right: 150px;
+//     top: 30px;
+// }
+
+// .logout-link { //logout link does not need to be visable from home screen 
+//     position: absolute;
+//     right: 250px;
+//     top: 30px;
+// }
 // .nav-to-map-div {
 //     position: absolute;
     

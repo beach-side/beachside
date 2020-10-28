@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
 import { connect } from 'react-redux'
 import {withRouter} from 'react-router-dom'
-import NavBar from '../NavBar/NavBar'
 import Login from './Login'
 import Register from './Register'
+import {BiSearchAlt} from 'react-icons/bi'
 
 
 function Landing(props) {
@@ -35,7 +35,8 @@ function Landing(props) {
                 <div className='nav-to-map-div'>
                     <button className='nav-to-map-button'
                         onClick={() => {props.history.push('/beachmap')}}>
-                        Search For Beaches
+                        Search For Beaches  
+                        <BiSearchAlt/>   
                     </button>
                 </div>
             
@@ -66,7 +67,7 @@ function Landing(props) {
                 </div>
             
                 <div className='description-div'>
-                    <p className='website-description'> Catch the perfect wave with our live surf data </p>
+                    <p className='website-description'> Get live weather, tide, and swell height from beaches around the world </p>
                 </div>
                 
             </div>
