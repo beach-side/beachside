@@ -53,7 +53,7 @@ function InfoContent(props) {
 
     const { condition, icon, sunrise, sunset, temperature, wind, timezone } = data
     return (
-        <div>
+        <div className='info-content'>
             <h1>{props.name}</h1>
             <h2>{temperature} °F</h2>
             <img src={icon} alt='weather' />

@@ -2,8 +2,8 @@ import React, { useEffect, useState, useRef, useCallback } from 'react'
 import InfoContent from './InfoContent'
 import SearchBox from './SearchBox'
 import './map.css'
-import NavBar from '../NavBar/NavBar'
 import Locate from './Locate'
+import { FaUmbrellaBeach } from 'react-icons/fa'
 import {
     GoogleMap,
     useLoadScript,
@@ -18,8 +18,8 @@ const mapContainerStyle = {
     height: '100vh'
 }
 const center = {
-    lat: 40.297119,
-    lng: -111.695007
+    lat: 39,
+    lng: -98
 }
 const options = {
     disableDefaultUI: true,
@@ -60,6 +60,20 @@ function Map() {
 
     const onMapLoad = useCallback((map) => {
         mapRef.current = map;
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                panTo({
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                })
+            },
+            (error) => {
+                panTo({
+                    lat: 39,
+                    lng: -98
+                })
+                mapRef.current.setZoom(5)
+            })
         // console.log(mapRef)
     }, [])
 
@@ -110,8 +124,11 @@ function Map() {
                         onClick={() => {
                             setSelected(null)
                             setSelected(beach)
-                            panTo({ lat: beach.geometry.location.lat, lng: beach.geometry.location.lng })
+
                         }}
+                        icon={<FaUmbrellaBeach />}
+
+
                     />
                 })}
 
@@ -128,6 +145,7 @@ function Map() {
                     </InfoWindow>) : null}
             </GoogleMap>
             <Locate panTo={panTo} />
+
             <button onClick={() => getBeaches(mapRef.current.center.lat(), mapRef.current.center.lng())}>load beaches</button>
         </div>
     )

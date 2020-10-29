@@ -1,11 +1,11 @@
 import React from 'react'
+import { AiOutlineCompass } from 'react-icons/ai'
 
 function Locate(props) {
     return (
-        <button onClick={() =>
+        <button className='compass-btn' onClick={() =>
             navigator.geolocation.getCurrentPosition(
                 (position) => {
-                    console.log(position)
                     props.panTo({
                         lat: position.coords.latitude,
                         lng: position.coords.longitude
@@ -14,7 +14,9 @@ function Locate(props) {
                 (error) => {
                     alert('Could not get current location')
                 })
-        }>My Location</button>
+        }>
+            <AiOutlineCompass />
+        </button>
     )
 }
 

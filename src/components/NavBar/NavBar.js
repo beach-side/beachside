@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { setUser, logoutUser } from '../../ducks/authReducer'
-import { withRouter, useHistory } from 'react-router-dom'
+import { withRouter, } from 'react-router-dom'
 
 function NavBar(props) {
+    
     return (
         <div className='header'>
 
@@ -11,27 +12,26 @@ function NavBar(props) {
 
                 <a className='beachside-logo-link'
                     onClick={() => { props.history.push('/') }} >
-                    <img src={require('../../assets/beachsidelogo.jpg')} height='10%' width='10%' />
+                    <img src={require('../../assets/beachsidelogo.jpg')} height='40%' width='40%' />
 
                 </a>
 
-                //! Needs to not display if no user logged in
                 <div className='nav-links'>
-                    <a className='favorites-link'
-                        onClick={() => { props.history.push('/favorites') }}> Favorites </a>
-
                     <a className='map-link'
                         onClick={() => { props.history.push('/beachmap') }}> Map </a>
+                        
+                    {/* Link below set up to only show if user is on session */}
+                    { props.user && 
+                    <a className='favorites-link'
+                        onClick={() => { props.history.push('/favorites') }}> Favorites </a>
+                        }
                 </div>
             </div>
 
             <div className='right-side-links'>
-                {/* NEED TO TEST props.user BELOW AND ENSURE USER DATA IS
-                CONSISTENT WITH BACKEND AND PULLS CORRECTLY */}
-                <p className='greeting'>
-                    {props.user ? `Welcome, ${props.user.email}!` : 'greeting'} </p>
+                <p className='greeting'> { props.user && `Welcome, ${props.user.name}!` } </p>
 
-                {/* NEED TO TEST BELOW AFTER DUMMY USER DATA IS CREATED - KARA/BRAD 10/20 */}
+                {/* logout button works if props.history.push stays */}
                 <a className='logout-link' onClick={() => {
                     props.logoutUser()
                     props.history.push('/')
@@ -42,5 +42,5 @@ function NavBar(props) {
     )
 }
 
-const mapStateToProps = (store) => store.authReducer
+const mapStateToProps = (reduxState) => reduxState
 export default connect(mapStateToProps, { setUser, logoutUser })(withRouter(NavBar))

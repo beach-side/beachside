@@ -1,7 +1,33 @@
+/* Imports for components' SCSS files */
 @import '../components/Map/_map';
 @import '../components/NavBar/_navbar';
 @import '../components/Landing/_landing';
-@import '../components/FavoriteBeaches/_favorites'
+@import '../components/FavoriteBeaches/_favorites';
 
 
+/* Imports from Google fonts */
+//font-family: 'Barlow', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,500;0,600;0,800;0,900;1,800;1,900&display=swap');
 
+
+// .header {
+//     //background-color: red;
+//     height:8vh;
+//     width:100%;
+// }
+
+// .nav-links { //link to Map 
+//     position: absolute;
+//     right: 150px;
+//     top: 30px;
+// }
+
+// .logout-link { //logout link does not need to be visable from home screen 
+//     position: absolute;
+//     right: 250px;
+//     top: 30px;
+// }
+// .nav-to-map-div {
+//     position: absolute;
+    
+// }
