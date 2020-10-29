@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import {withRouter} from 'react-router-dom'
 import Login from './Login'
 import Register from './Register'
-import {BiSearchAlt} from 'react-icons/bi'
+import {FaSearchLocation} from 'react-icons/fa'
 
 
 function Landing(props) {
@@ -36,7 +36,8 @@ function Landing(props) {
                     <button className='nav-to-map-button'
                         onClick={() => {props.history.push('/beachmap')}}>
                         Search For Beaches  
-                        <BiSearchAlt/>   
+                        <FaSearchLocation  style={{ paddingLeft: 15 }}/>
+                         
                     </button>
                 </div>
             
@@ -67,7 +68,7 @@ function Landing(props) {
                 </div>
             
                 <div className='description-div'>
-                    <p className='website-description'> Get live weather, tide, and swell height from beaches around the world </p>
+                    <p className='website-description'> Get live weather, tide, and swell height from beaches around the world. </p>
                 </div>
                 
             </div>
