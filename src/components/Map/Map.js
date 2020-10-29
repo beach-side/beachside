@@ -147,7 +147,7 @@ function Map() {
             </GoogleMap>
             <Locate panTo={panTo} />
 
-            <button className='load-beaches' onClick={() => getBeaches(mapRef.current.center.lat(), mapRef.current.center.lng())}>load beaches</button>
+            <button className='load-beaches' onClick={() => getBeaches(mapRef.current.center.lat(), mapRef.current.center.lng())}><span>load</span> beaches</button>
         </div>
     )
 }

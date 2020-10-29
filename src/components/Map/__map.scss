@@ -7,16 +7,17 @@
     max-width: 400px;
     z-index: 10;
     margin: auto auto;
-   input {
-    height: 50px;
-    width: 350px;
-    font-size: 25px;
-    border-radius: 15px;
-    padding: 5px 10px;
-    outline: none;
+    input {
+        height: 50px;
+        width: 350px;
+        border-radius: 15px;
+        padding: 5px 10px;
+        outline: none;
+        font-size: 25px;
     border: 3px solid #6990b4;
     outline: none;
    }
+   
    
 }
 .compass-btn {
@@ -53,7 +54,7 @@
     color: #19303f;
     font-weight: bold;;
     border-radius: 15px;
-    box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.75);
+    // box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.75);
     outline: none;
     &:hover{
         cursor: pointer;
@@ -80,7 +81,7 @@
         border-radius: 5px;
         margin: 15px auto;
         width: 90%;
-        box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.75);
+        // box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.75);
         font-weight: bold;
         p{
             margin-top: 5px;
@@ -101,10 +102,11 @@
 
 .tides {
     font-size: 20px;
-    background-color: #6990b4;
+    // border: 2px solid #d16f2d;
     padding: 5px 5px;
     border-radius: 5px;
-    box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 1px 5px 2px rgba(0,0,0,0.75);
+
     margin: 10px auto;
         width: 90%;
         h2{
@@ -146,10 +148,11 @@
 
 .swell-info {
     font-size: 20px;
-    background-color: #6990b4;
+    // border: 2px solid #d16f2d;
     padding: 5px 5px;
     border-radius: 5px;
-    box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 1px 5px 2px rgba(0,0,0,0.75);
+
     margin: 10px auto;
     width: 90%;
     h2{
@@ -161,5 +164,105 @@
         font-weight: bold;
         margin-top: 5px;
         
+    }
+}
+
+@media(max-width: 500px){
+    .search-box {
+        position: absolute;
+        top: 12vh;
+        left: 60%;
+        transform: translate(-50%);
+        width: 100%;
+        max-width: 200px;
+        max-height: 250px;
+        z-index: 10;
+        margin: auto auto;
+       input {
+        height: 50px;
+        width: 150px;
+        font-size: 15px;
+        border-radius: 15px;
+        padding: 5px 10px;
+        outline: none;
+        border: 3px solid #6990b4;
+        outline: none;
+    }
+    li{
+        font-size: 15px;
+    }
+       
+    }
+    .load-beaches {
+        position: absolute;
+        bottom: 15px;
+        width: 100%;
+        max-width: 100px;
+        z-index: 10;
+        left: 50%;
+        transform: translate(-50%);
+        margin: auto auto;
+        font-size: 15px;
+        padding: 5px 10px;
+        text-transform: uppercase;
+        background-color: #d16f2d;
+        color: #19303f;
+        font-weight: bold;;
+        border-radius: 15px;
+        // box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.75);
+        outline: none;
+        &:hover{
+            cursor: pointer;
+            background-color: #c05711;
+        }
+        span{
+            display: none;
+        }
+    }
+    .compass-btn {
+        position: absolute;
+        border-radius: 5px;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+        // background-color: #6990b4;
+        padding: 2px 2px;
+        z-index: 10;
+        display: flex;
+        font-size: 30px;
+        top: 10vh;
+        right: 10px;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        outline: none;
+        color: rgb(83, 80, 80);
+    }
+    .info-content {
+        max-height: 400px;
+        max-width: 300px;
+        text-align: center;
+        
+        h1{
+            font-size: 25px;
+            font-weight: bold;
+        }
+        .weather-info{
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            background-color: #6990b4;
+            padding-left: 15px;
+            font-size: 25px;
+            text-transform: uppercase;
+            border-radius: 5px;
+            margin: 15px auto;
+            width: 90%;
+            // box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.75);
+            font-weight: bold;
+            p{
+                margin-top: 5px;
+                font-size: 20px;
+            }
+    
+        }
     }
 }
