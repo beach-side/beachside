@@ -55,8 +55,8 @@ function FavoriteModal(props) {
           <h3>{element.swellHeight}ft at {element.swellPeriod}s {element.swellDirection}°</h3>
         </div>
         <div className='favorite-swell-information'>
-          <h2>Surf Height</h2>
-          <h3>{element.waveHeight}</h3>
+          <h2>Surf Height:</h2>
+          <h3>{element.waveHeight}ft</h3>
         </div>
         <div className='favorite-swell-information'>
           <h2>Water Temp:</h2>

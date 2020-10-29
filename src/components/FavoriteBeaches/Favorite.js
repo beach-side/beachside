@@ -28,7 +28,6 @@ function Favorite(props) {
 
   return (
     <div className='favorites-weather-container'>
-      {/* <button onClick={() => props.deleteBeach(props.data.id)}>Delete Beach</button> */}
       <div className='favorites-left-container'>
         <h1 className='favorites-beach-name'>{props.data.beach_name}</h1>
 
@@ -78,6 +77,7 @@ function Favorite(props) {
         {modal === false && <button onClick={() => setModal(true)}> <GiWaveSurfer /> Tide Request</button>}
         {modal === true && <FavoriteModal setModal={setModal} lat={props.data.lat} lng={props.data.lng} />}
       </div>
+      <button className='delete-beach-button' onClick={() => props.deleteBeach(props.data.id)}>Delete Beach</button>
     </div >
   )
 }
