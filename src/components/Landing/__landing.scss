@@ -12,6 +12,17 @@ $barlow-font: 'Barlow', sans-serif;
     
 }
 
+@mixin inputBoxArea() {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 35vw;
+    height: 30vh;
+    background: transparentize(white, 0.5);
+    border-radius: 26px;
+}
+
 @mixin buttons() {
     color: $main-font-color;
     letter-spacing: 0.06em;
@@ -81,11 +92,7 @@ $barlow-font: 'Barlow', sans-serif;
 }
 
 .login {
-    @include flexVerticalCenter();
-    width: 35vw;
-    height: 30vh;
-    background: transparentize(white, 0.5);
-    border-radius: 40px;
+    @include inputBoxArea();
 
     .login-view {
         height: 17.5vh;
@@ -103,8 +110,9 @@ $barlow-font: 'Barlow', sans-serif;
         @include flexVerticalCenter();
         padding: 7px 141px 7px 9px;
         border: none;
-        margin: 3px 0;
+        margin: 20px;
         letter-spacing: 0.2em;
+        border-radius: 4px;
     }
 
     .password-input {
@@ -112,9 +120,10 @@ $barlow-font: 'Barlow', sans-serif;
     }
 
     .login-view-buttons {
+        width: 20vw;
         display: flex; 
+        flex-direction: row;
         justify-content: space-between;
-        align-items: flex-end;
         button {
             @include buttons();
             background: none;
@@ -125,6 +134,37 @@ $barlow-font: 'Barlow', sans-serif;
             }
         }
 
+    }
+}
+
+.register {
+    @include inputBoxArea();
+
+    .register-inputs {
+        input {
+            @include flexVerticalCenter();
+            padding: 7px 141px 7px 9px;
+            border: none;
+            margin: 9px;
+            letter-spacing: 0.2em;
+            border-radius: 4px;
+        }
+    }
+
+    .register-buttons {
+        width: 20vw;
+        display: flex; 
+        flex-direction: row;
+        justify-content: space-between;
+        button {
+            @include buttons();
+            background: none;
+            font-size: 17px;
+            font-weight: 500;
+            &:hover {
+                color: $accent-orange;
+            }
+        }
     }
 }
 

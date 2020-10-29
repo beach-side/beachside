@@ -24,13 +24,15 @@ function Login(props) {
 
                 <div className='login-inputs'>
                     <input className='email-input' 
+                        placeholder='email'
                         value={email}
                         onChange={(e) => { setEmail(e.target.value) }} />
-    email
-                    <input className='password-input'       type='password' 
+
+                    <input className='password-input'
+                    placeholder='password'
+                    type='password' 
                     value={password}
                         onChange={(e) => { setPassword(e.target.value) }} />
-    password
                 </div>
 
                 <div className='login-view-buttons'>
