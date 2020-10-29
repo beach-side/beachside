@@ -50,7 +50,7 @@ class Register extends Component {
               <input
                   input type="name"
                   maxLength="65"
-                  placeholder="Enter Surfer's Name"
+                  placeholder="surfer's name"
                   name="name"
                   value={this.state.name}
                   onChange={(e) => {
@@ -61,7 +61,7 @@ class Register extends Component {
                 <input
                   input type="email"
                   maxLength="100"
-                  placeholder="Enter Email"
+                  placeholder="email"
                   name="email"
                   value={this.state.email}
                   onChange={(e) => {
@@ -72,7 +72,7 @@ class Register extends Component {
                 <input
                   type="password"
                   maxLength="20"
-                  placeholder="Enter Password"
+                  placeholder="password"
                   name="password"
                   value={this.state.password}
                   onChange={(e) => {
@@ -82,7 +82,7 @@ class Register extends Component {
                 <input
                   type="password"
                   maxLength="20"
-                  placeholder="Confirm Password"
+                  placeholder="confirm password"
                   name="confirmPassword"
                   value={this.state.confirmPassword}
                   onChange={(e) => {

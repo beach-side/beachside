@@ -20,7 +20,7 @@ function Login(props) {
     return (
         <div className='login'>
 
-            <div className='login-view'>
+            {/* <div className='login-view'> */}
 
                 <div className='login-inputs'>
                     <input className='email-input' 
@@ -52,7 +52,7 @@ function Login(props) {
                         }}> Login </button>
                 </div>
 
-            </div>
+            {/* </div> */}
 
 
 
