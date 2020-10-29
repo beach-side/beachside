@@ -44,6 +44,7 @@ module.exports = {
         return res.sendStatus(200)
     },
     getUser: (req, res) => {
+        console.log('Hit GetUser')
         if (req.session.user) {
             res.status(200).send(req.session.user)
         } else {
