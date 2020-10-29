@@ -7,7 +7,7 @@ import { WiDegrees } from 'react-icons/wi';
 import { FaWind } from 'react-icons/fa';
 import { FiSunrise, FiSunset } from 'react-icons/fi';
 import { GiWaveSurfer } from 'react-icons/gi'
-import './favorite.css'
+import { RiDeleteBinLine } from 'react-icons/ri'
 
 function Favorite(props) {
   const [favoritesList, setFavoritesList] = useState({})
@@ -77,7 +77,7 @@ function Favorite(props) {
         {modal === false && <button onClick={() => setModal(true)}> <GiWaveSurfer /> Tide Request</button>}
         {modal === true && <FavoriteModal setModal={setModal} lat={props.data.lat} lng={props.data.lng} />}
       </div>
-      <button className='delete-beach-button' onClick={() => props.deleteBeach(props.data.id)}>Delete Beach</button>
+      <button className='delete-beach-button' onClick={() => props.deleteBeach(props.data.id)}><RiDeleteBinLine /></button>
     </div >
   )
 }
