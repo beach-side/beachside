@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom'
 import { setUser } from '../../ducks/authReducer'
 import { connect } from 'react-redux'
 import Favorite from './Favorite'
+import './favorite.css'
 
 
 function Favorites(props) {
@@ -24,12 +25,13 @@ function Favorites(props) {
   }
 
   return (
-    <div>
+    <div className='favorites-container'>
 
       {favoritesList.map((element, index) => {
         return (
-          <div>
+          <div className='mapped-favorites-container'>
             <Favorite
+              className='tide-request-container'
               key={index}
               data={element}
               deleteBeach={deleteBeach}
@@ -37,11 +39,6 @@ function Favorites(props) {
           </div>
         )
       })}
-
-      <div className='favorites-list'>
-
-      </div>
-
     </div>
   )
 }
