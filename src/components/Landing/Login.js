@@ -22,11 +22,16 @@ function Login(props) {
 
             <div className='login-view'>
 
-                <div>
-                    <input className='email-input' placeholder={'email'} value={email}
+                <div className='login-inputs'>
+                    <input className='email-input' 
+                        placeholder='email'
+                        value={email}
                         onChange={(e) => { setEmail(e.target.value) }} />
 
-                    <input className='password-input' type='password' placeholder={'password'} value={password}
+                    <input className='password-input'
+                    placeholder='password'
+                    type='password' 
+                    value={password}
                         onChange={(e) => { setPassword(e.target.value) }} />
                 </div>
 
