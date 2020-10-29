@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import NavBar from '../NavBar/NavBar'
 import axios from 'axios'
 import { withRouter } from 'react-router-dom'
 import { setUser } from '../../ducks/authReducer'
@@ -16,6 +15,8 @@ function Favorites(props) {
       axios.get(`/api/users/${res.data.id}/favorites`).then((res) => {
         setFavoritesList(res.data)
       })
+    }).catch((err) => {
+      props.history.push('/')
     })
   }, [])
 
