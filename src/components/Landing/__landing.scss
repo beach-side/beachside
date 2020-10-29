@@ -23,6 +23,14 @@ $barlow-font: 'Barlow', sans-serif;
     border-radius: 26px;
 }
 
+@mixin inputs() {
+    width: 20vw;
+    padding: 7px 9px;
+    border: none;
+    letter-spacing: 0.2em;
+    border-radius: 4px;
+}
+
 @mixin buttons() {
     color: $main-font-color;
     letter-spacing: 0.06em;
@@ -94,29 +102,22 @@ $barlow-font: 'Barlow', sans-serif;
 .login {
     @include inputBoxArea();
 
-    .login-view {
-        height: 17.5vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
+    // .login-view {
+    //     height: 17.5vh;
+    //     display: flex;
+    //     flex-direction: column;
+    //     justify-content: space-between;
+    // }
 
     .login-inputs {
         color: $main-font-color;
-        letter-spacing: 0.06em;
-    }
+        // letter-spacing: 0.06em;
 
-    input {
-        @include flexVerticalCenter();
-        padding: 7px 141px 7px 9px;
-        border: none;
-        margin: 20px;
-        letter-spacing: 0.2em;
-        border-radius: 4px;
-    }
-
-    .password-input {
-        margin-top: 15px;
+        input {
+            @include flexVerticalCenter();
+            @include inputs();
+            margin: 20px;
+        }
     }
 
     .login-view-buttons {
@@ -143,11 +144,8 @@ $barlow-font: 'Barlow', sans-serif;
     .register-inputs {
         input {
             @include flexVerticalCenter();
-            padding: 7px 141px 7px 9px;
-            border: none;
-            margin: 9px;
-            letter-spacing: 0.2em;
-            border-radius: 4px;
+            @include inputs();
+            margin-top: 15px;
         }
     }
 
