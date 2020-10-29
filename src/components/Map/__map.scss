@@ -55,8 +55,9 @@
     border-radius: 15px;
     box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.75);
     outline: none;
-    :hover{
+    &:hover{
         cursor: pointer;
+        background-color: #c05711;
     }
 }
 
@@ -86,5 +87,79 @@
             font-size: 20px;
         }
 
+    }
+}
+
+.time{
+    display: flex;
+    margin: 5px auto;
+    width: 90%;
+    justify-content: space-around;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.tides {
+    font-size: 20px;
+    background-color: #6990b4;
+    padding: 5px 5px;
+    border-radius: 5px;
+    box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.75);
+    margin: 10px auto;
+        width: 90%;
+        h2{
+            font-size: 30px;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+    h3{
+        font-weight: bold;
+        margin-top: 5px;
+        &:nth-of-type(2){
+            text-transform: uppercase;
+        }
+    }
+    div{
+        &:nth-of-type(2){
+            display: flex;
+            width: 55%;
+            margin: 5px auto;
+            justify-content: space-around;
+            button{
+                padding: 3px 10px;
+                background-color: #d16f2d;
+                border-radius: 5px;
+                outline: none;
+                box-shadow: -1px 3px 5px 0px rgba(0,0,0,0.75);
+                &:nth-of-type(2){
+                    box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.75);
+                }
+                &:hover{
+                    cursor: pointer;
+                    background-color: #c05711;
+                }
+            }
+        }
+    }
+    
+}
+
+.swell-info {
+    font-size: 20px;
+    background-color: #6990b4;
+    padding: 5px 5px;
+    border-radius: 5px;
+    box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.75);
+    margin: 10px auto;
+    width: 90%;
+    h2{
+        font-size: 30px;
+        font-weight: bold;
+        text-decoration: underline;
+    }
+    h3{
+        font-weight: bold;
+        margin-top: 5px;
+        
     }
 }

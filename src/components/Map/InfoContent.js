@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Modal from './Modal'
 import axios from 'axios'
+import { FiSunrise, FiSunset } from 'react-icons/fi';
 
 function InfoContent(props) {
     const [data, setDate] = useState({})
@@ -64,13 +65,13 @@ function InfoContent(props) {
                 <img src={icon} alt='weather' />
             </div>
             <div className='time'>
-                <p>{sunrise}</p>
-                <p>{sunset}</p>
+                <p> <FiSunrise /> {sunrise}</p>
+                <p> <FiSunset /> {sunset}</p>
             </div>
             <div>
 
             </div>
-            <button onClick={() => setModal(true)}>Surf Details</button>
+            {!modal ? <button onClick={() => setModal(true)}>Surf Details</button> : null}
             {props.userid ?
                 !max ?
                     !saved ? <button onClick={() => saveBeach()}>save beach</button>

@@ -11,6 +11,7 @@ import {
     InfoWindow,
 } from '@react-google-maps/api'
 import Axios from 'axios'
+import mapStyles from './mapStyles'
 
 const libraries = ["places"]
 const mapContainerStyle = {
@@ -22,6 +23,7 @@ const center = {
     lng: -98
 }
 const options = {
+    styles: mapStyles,
     disableDefaultUI: true,
     zoomControl: true,
 }
