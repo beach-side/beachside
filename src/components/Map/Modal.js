@@ -4,6 +4,7 @@ import axios from 'axios'
 import { setUser } from '../../ducks/authReducer'
 import { withRouter, useHistory } from 'react-router-dom'
 import { ImArrowRight, ImArrowLeft } from 'react-icons/im'
+import { BounceLoader } from 'react-spinners/BounceLoader'
 
 function Modal(props) {
     const [tide, setTide] = useState([])
@@ -11,10 +12,12 @@ function Modal(props) {
     const [weatherInfo, setWeatherInfo] = useState([])
     const [count, setCount] = useState(0)
 
+
     useEffect(() => {
         axios.get(`/api/storm/tides?lat=${props.lat}&lng=${props.lng}`)
             .then((res) => {
                 setTide(res.data)
+
             })
         axios.get(`/api/storm/weather?lat=${props.lat}&lng=${props.lng}`)
             .then((res) => {
@@ -58,7 +61,7 @@ function Modal(props) {
                     </div>
                 )
             })} */}
-            <div className='tides'>
+            { tide ? <div className='tides'>
                 <h2>Tide info</h2>
                 {mappedTide[count]}
                 <div>
@@ -67,15 +70,24 @@ function Modal(props) {
                     <button onClick={() => next()}><ImArrowRight /></button>
                 </div>
             </div>
+                :
+                <div className='tides'>
+                    <BounceLoader
+                        size={100}
+                        color={'#d16f2d'}
+                        loading={!tide}
+                    />
+                </div>
+            }
             { weatherInfo ? weatherInfo.map((element, index) => {
                 return (
                     <div className='swell-info' key={index}>
                         <h2>Swell info</h2>
-                        <h3>SwellDirection: {element.swellDirection} Degrees</h3>
-                        <h3>SwellHeight:{element.swellHeight} Feet</h3>
-                        <h3>Swellperiod: {element.swellPeriod} Seconds</h3>
+                        <h3>SwellDirection: {element.swellDirection}°</h3>
+                        <h3>SwellHeight:{element.swellHeight}'</h3>
+                        <h3>Swellperiod: {element.swellPeriod} Sec</h3>
                         <h3>WaterTemperature: {element.waterTemperature} °F</h3>
-                        <h3>WaveHeight: {element.waveHeight}Feet</h3>
+                        <h3>WaveHeight: {element.waveHeight}'</h3>
                     </div>
                 )
             }) : <div>No swell information available</div>}
