@@ -2,14 +2,25 @@ $main-font-color: #19303F;
 $wave-blue: #6990B4;
 $oil-blue: #469Fa6;
 $accent-orange: #D16F2D;
+$barlow-font: 'Barlow', sans-serif; 
 
 @mixin flexVerticalCenter() {
     display: flex;
     flex-direction: column;
-	flex-wrap: nowrap;
 	justify-content: center;
     align-items: center;
     
+}
+
+@mixin inputBoxArea() {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 35vw;
+    height: 30vh;
+    background: transparentize(white, 0.5);
+    border-radius: 26px;
 }
 
 @mixin buttons() {
@@ -22,6 +33,10 @@ $accent-orange: #D16F2D;
       -moz-transition-duration: .2s;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 .landing-div {
     @include flexVerticalCenter();
 
@@ -30,20 +45,20 @@ $accent-orange: #D16F2D;
     background-image: url(../../assets/pic2.jpg);
     background-size: cover;
     background-position: center;
-    font-family: 'Barlow', sans-serif;
+    font-family: $barlow-font;
 }
 
 .nav-to-map-button {
     @include buttons();
     font-size: 41px;
-    font-weight: 20px;
+
     padding: 40px 175px;
     border-radius: 75px;
     background: transparentize(white, .35);
     &:hover {
         background: transparentize(white, 0.15);
         text-shadow: 2px 2px 4px white;
-    }
+    }  
 }
 
 .login-links {
@@ -58,27 +73,111 @@ $accent-orange: #D16F2D;
         @include buttons();
         background: none;
         font-size: 22px;
+        font-weight: 500;
+        &:hover {
+            color: $accent-orange;
+        }
     }
-}
-
-.login {
-    @include flexVerticalCenter();
-    width: 35vw;
-    height: 30vh;
-    background: transparentize(white, 0.5);
+    .create-acct-area {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 .input-box-area {
     height: 30vh;
     width: 30vw;
+    margin-right: 86px;
+}
+
+.login {
+    @include inputBoxArea();
+
+    .login-view {
+        height: 17.5vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .login-inputs {
+        color: $main-font-color;
+        letter-spacing: 0.06em;
+    }
+
+    input {
+        @include flexVerticalCenter();
+        padding: 7px 141px 7px 9px;
+        border: none;
+        margin: 20px;
+        letter-spacing: 0.2em;
+        border-radius: 4px;
+    }
+
+    .password-input {
+        margin-top: 15px;
+    }
+
+    .login-view-buttons {
+        width: 20vw;
+        display: flex; 
+        flex-direction: row;
+        justify-content: space-between;
+        button {
+            @include buttons();
+            background: none;
+            font-size: 17px;
+            font-weight: 500;
+            &:hover {
+                color: $accent-orange;
+            }
+        }
+
+    }
+}
+
+.register {
+    @include inputBoxArea();
+
+    .register-inputs {
+        input {
+            @include flexVerticalCenter();
+            padding: 7px 141px 7px 9px;
+            border: none;
+            margin: 9px;
+            letter-spacing: 0.2em;
+            border-radius: 4px;
+        }
+    }
+
+    .register-buttons {
+        width: 20vw;
+        display: flex; 
+        flex-direction: row;
+        justify-content: space-between;
+        button {
+            @include buttons();
+            background: none;
+            font-size: 17px;
+            font-weight: 500;
+            &:hover {
+                color: $accent-orange;
+            }
+        }
+    }
 }
 
 .website-description {
     width: 80vw;
+    margin-top: 30px;
+    font-style: italic;
+    font-weight: 700;
+    letter-spacing: 0.06em;
     text-align: center;
     color: transparentize(white, .2);
     font-size: 35px;
-    font-family: 'Barlow', sans-serif;
+    font-family: $barlow-font;
 }
 
 .footer {
@@ -88,6 +187,7 @@ $accent-orange: #D16F2D;
     align-items: center;
     p {
         color: $main-font-color;
+        font-family: $barlow-font;
         font-size: 16px;
     }
 }
