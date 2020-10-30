@@ -102,6 +102,17 @@ $barlow-font: 'Barlow', sans-serif;
         flex-direction: column;
         align-items: center;
     }
+    .logged-in-message {
+        color: $main-font-color;
+        font-size: 25px;
+        letter-spacing: 0.06em;
+        text-align: center;
+        @media (max-width: 500px) {
+            font-size: 19px;
+            width: 150px;
+            line-height: 23px;
+        }
+    }
 }
 
 .input-box-area {
