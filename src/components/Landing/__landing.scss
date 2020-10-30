@@ -38,6 +38,7 @@ $barlow-font: 'Barlow', sans-serif;
 }
 
 @mixin buttons() {
+    font-family: $barlow-font;
     color: $main-font-color;
     letter-spacing: 0.06em;
     border: none;
@@ -53,7 +54,7 @@ $barlow-font: 'Barlow', sans-serif;
 
 .landing-div {
     @include flexVerticalCenter();
-
+    
     width: 100%;
     height: 89vh;
     background-image: url(../../assets/pic2.jpg);
@@ -64,6 +65,7 @@ $barlow-font: 'Barlow', sans-serif;
 
 .nav-to-map-button {
     @include buttons();
+    font-family: $barlow-font;
     height: 125px;
     width: 700px;
     display: flex;
@@ -88,6 +90,7 @@ $barlow-font: 'Barlow', sans-serif;
     justify-content: space-around;
     align-items: baseline;
     color: $main-font-color;
+    font-family: $barlow-font;
     button {
         @include buttons();
         background: none;
@@ -101,6 +104,19 @@ $barlow-font: 'Barlow', sans-serif;
         display: flex;
         flex-direction: column;
         align-items: center;
+    
+    }
+    .logged-in-message {
+        font-family: $barlow-font;
+        color: $main-font-color;
+        font-size: 25px;
+        letter-spacing: 0.06em;
+        text-align: center;
+        @media (max-width: 500px) {
+            font-size: 19px;
+            width: 150px;
+            line-height: 23px;
+        }
     }
 }
 
