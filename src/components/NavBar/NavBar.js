@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { setUser, logoutUser } from '../../ducks/authReducer'
 import { withRouter, } from 'react-router-dom'
+import axios from 'axios'
 
 function NavBar(props) {
 
+    useEffect(() => {
+        axios.get('/api/auth/getUser').then((res) => {
+            props.setUser(res.data)
+        })
+    }, [])
     return (
         <div className='header'>
 
