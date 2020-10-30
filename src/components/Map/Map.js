@@ -11,17 +11,19 @@ import {
     InfoWindow,
 } from '@react-google-maps/api'
 import Axios from 'axios'
+import mapStyles from './mapStyles'
 
 const libraries = ["places"]
 const mapContainerStyle = {
     width: '100vw',
-    height: '100vh'
+    height: '92vh'
 }
 const center = {
     lat: 39,
     lng: -98
 }
 const options = {
+    styles: mapStyles,
     disableDefaultUI: true,
     zoomControl: true,
 }
@@ -96,12 +98,13 @@ function Map() {
 
     return (
         <div>
-            <div className='search-box'>
-                <SearchBox
-                    panTo={panTo}
-                    getBeaches={getBeaches}
-                />
-            </div>
+
+            <SearchBox
+                className='search-input'
+                panTo={panTo}
+                getBeaches={getBeaches}
+            />
+
 
 
             <GoogleMap
@@ -127,8 +130,6 @@ function Map() {
 
                         }}
                         icon={<FaUmbrellaBeach />}
-
-
                     />
                 })}
 
@@ -146,7 +147,7 @@ function Map() {
             </GoogleMap>
             <Locate panTo={panTo} />
 
-            <button onClick={() => getBeaches(mapRef.current.center.lat(), mapRef.current.center.lng())}>load beaches</button>
+            <button className='load-beaches' onClick={() => getBeaches(mapRef.current.center.lat(), mapRef.current.center.lng())}><span>load</span> beaches</button>
         </div>
     )
 }

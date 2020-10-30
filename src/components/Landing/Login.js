@@ -22,35 +22,35 @@ function Login(props) {
 
             {/* <div className='login-view'> */}
 
-                <div className='login-inputs'>
-                    <input className='email-input' 
-                        placeholder='email'
-                        value={email}
-                        onChange={(e) => { setEmail(e.target.value) }} />
+            <div className='login-inputs'>
+                <input className='email-input'
+                    placeholder='email'
+                    value={email}
+                    onChange={(e) => { setEmail(e.target.value) }} />
 
-                    <input className='password-input'
+                <input className='password-input'
                     placeholder='password'
-                    type='password' 
+                    type='password'
                     value={password}
-                        onChange={(e) => { setPassword(e.target.value) }} />
-                </div>
+                    onChange={(e) => { setPassword(e.target.value) }} />
+            </div>
 
-                <div className='login-view-buttons'>
-                    <button className='cancel-button'
-                        onClick={() => { props.hideAll() }}>
-                        Cancel
+            <div className='login-view-buttons'>
+                <button className='cancel-button'
+                    onClick={() => { props.hideAll() }}>
+                    Cancel
                     </button>
 
-                    <button className='login-button'
-                        onClick={() => {
-                            axios.post('/api/auth/login', { email, password }).then((res) => {
-                                props.setUser(res.data)
-                                // props.history.push('/favorites')
-                                props.hideAll()
-                            }).catch((e) => { alert('Email or Password does not match. Please try again.') })
-                            resetFields()
-                        }}> Login </button>
-                </div>
+                <button className='login-button'
+                    onClick={() => {
+                        axios.post('/api/auth/login', { email, password }).then((res) => {
+                            props.setUser(res.data)
+                            props.history.push('/beachmap')
+                            props.hideAll()
+                        }).catch((e) => { alert('Email or Password does not match. Please try again.') })
+                        resetFields()
+                    }}> Login </button>
+            </div>
 
             {/* </div> */}
 

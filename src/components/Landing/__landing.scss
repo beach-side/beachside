@@ -73,7 +73,7 @@ $barlow-font: 'Barlow', sans-serif;
     justify-content: center;
     align-items: center;
     font-size: 41px;
-    padding: 0px 0px;
+    outline: none;
     border-radius: 75px;
     background: transparentize(white, .35);
     &:hover {

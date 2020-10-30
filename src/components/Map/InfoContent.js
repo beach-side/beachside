@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import Modal from './Modal'
 import axios from 'axios'
+import { FiSunrise, FiSunset } from 'react-icons/fi';
+import { BsBookmarkCheck } from 'react-icons/bs'
+import { RiMapPinAddFill } from 'react-icons/ri'
 
 function InfoContent(props) {
     const [data, setDate] = useState({})
@@ -52,20 +55,35 @@ function InfoContent(props) {
     }
 
     const { condition, icon, sunrise, sunset, temperature, wind, timezone } = data
+    console.log(wind)
     return (
         <div className='info-content'>
             <h1>{props.name}</h1>
-            <h2>{temperature} °F</h2>
-            <img src={icon} alt='weather' />
-            <p>{condition}</p>
-            <button onClick={() => setModal(true)}>Surf Details</button>
+            <div className='weather-info'>
+                <div>
+                    <h2>{temperature} °F</h2>
+                    <p>{condition}</p>
+                </div>
+                <img src={icon} alt='weather' />
+            </div>
+            <div className='time'>
+                <p> <FiSunrise /> {sunrise}</p>
+                <p> <FiSunset /> {sunset}</p>
+            </div>
+            <div>
+
+            </div>
             {props.userid ?
                 !max ?
-                    !saved ? <button onClick={() => saveBeach()}>save beach</button>
+                    !saved ?
+                        <div>
+                            <button onClick={() => saveBeach()}><RiMapPinAddFill /> Add to favorites</button>
+                        </div>
                         :
-                        <div>Saved!</div>
+                        <div>Saved <BsBookmarkCheck /></div>
                     : <div>Max beaches saved</div>
                 : null}
+            {!modal ? <button onClick={() => setModal(true)}>Surf Details</button> : null}
             {!modal ? null : <Modal setModal={setModal} lat={props.lat} lng={props.lng} />}
         </div>
     )
