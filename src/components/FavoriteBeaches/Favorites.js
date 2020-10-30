@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import NavBar from '../NavBar/NavBar'
 import axios from 'axios'
 import { withRouter } from 'react-router-dom'
 import { setUser } from '../../ducks/authReducer'
 import { connect } from 'react-redux'
 import Favorite from './Favorite'
+import './favorite.css'
 
 
 function Favorites(props) {
@@ -15,6 +15,8 @@ function Favorites(props) {
       axios.get(`/api/users/${res.data.id}/favorites`).then((res) => {
         setFavoritesList(res.data)
       })
+    }).catch((err) => {
+      props.history.push('/')
     })
   }, [])
 
@@ -24,12 +26,13 @@ function Favorites(props) {
   }
 
   return (
-    <div>
+    <div className='favorites-container'>
 
       {favoritesList.map((element, index) => {
         return (
-          <div>
+          <div className='mapped-favorites-container'>
             <Favorite
+              className='tide-request-container'
               key={index}
               data={element}
               deleteBeach={deleteBeach}
@@ -37,11 +40,6 @@ function Favorites(props) {
           </div>
         )
       })}
-
-      <div className='favorites-list'>
-
-      </div>
-
     </div>
   )
 }
