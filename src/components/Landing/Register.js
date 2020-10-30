@@ -103,7 +103,7 @@ class Register extends Component {
                   this.handleRegister()
                 }}
                 >
-                Create Account
+                Submit
               </button>
             </div>
         
