@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import { connect } from 'react-redux'
 import {withRouter} from 'react-router-dom'
+import { setUser } from '../../ducks/authReducer'
 import Login from './Login'
 import Register from './Register'
 import {FaSearchLocation} from 'react-icons/fa'
@@ -35,18 +36,25 @@ function Landing(props) {
                 <div className='nav-to-map-div'>
                     <button className='nav-to-map-button'
                         onClick={() => {props.history.push('/beachmap')}}>
-                        Search For Beaches  
-                        <FaSearchLocation  style={{ paddingLeft: 15 }}/>
+                        <p className='search-beaches-btn'>
+                            Search For Beaches
+                        </p> 
+                        <span>
+                            <FaSearchLocation  style={{ paddingLeft: 15 }}/>
+                        </span>
                          
                     </button>
                 </div>
             
                 <div className='login-links'>
+                    { !props.user ? 
                     <button className='login-link'
                         onClick={() => {handleShowLogin()}}>
                         Login
-                    </button>
+                    </button> 
+                    : <p className='logged-in-message'> Click above to get started! </p> }
 
+                    { !props.user && 
                     <div className='create-acct-area'>
                         <button className='register-link'
                             onClick={() => {handleShowRegister()}}>
@@ -54,7 +62,7 @@ function Landing(props) {
                         </button>
                         
                         <p className='register-reason'> to view saved locations </p>
-                    </div>
+                    </div> }
                 </div>
             
                 <div className='input-box-area'>
@@ -83,4 +91,5 @@ function Landing(props) {
     )
 }
 
-export default (withRouter(Landing))
+const mapStateToProps = (reduxState) => reduxState
+export default connect(mapStateToProps, { setUser })(withRouter(Landing))

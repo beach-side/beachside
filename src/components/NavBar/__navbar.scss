@@ -1,9 +1,21 @@
 $barlow-font: 'Barlow', sans-serif; 
+@mixin linkHover() {
+    &:hover {
+        color: #D16F2D;
+
+    }
+    transition-duration: .2s;
+      -webkit-transition-duration: .2s;
+      -moz-transition-duration: .2s;
+}
 
 .header {
-    //background-color: red;
     height:8vh;
     width:100%;
+}
+
+.beachside-logo-link {
+    padding: 25px 0 0 4px;
 }
 
 .map-link{ //link to Map 
@@ -14,8 +26,10 @@ $barlow-font: 'Barlow', sans-serif;
     cursor: pointer;
     font-family: $barlow-font;
     //font-size: x-large;
+    @include linkHover();
+}
 
-}.favorites-link { 
+.favorites-link { 
     position: absolute;
     right: 120px;
     top: 30px;
@@ -23,6 +37,7 @@ $barlow-font: 'Barlow', sans-serif;
     font-family: $barlow-font;
     cursor: pointer;
     //font-size: x-large;
+    @include linkHover();
 }
 
 .logout-link { //logout link does not need to be visable from home screen 
@@ -33,6 +48,7 @@ $barlow-font: 'Barlow', sans-serif;
     font-family: $barlow-font;
     cursor: pointer;
     //font-size: x-large;
+    @include linkHover();
 }
 // .nav-to-map-div {
 //     position: absolute;
@@ -46,4 +62,7 @@ $barlow-font: 'Barlow', sans-serif;
     color: #19303f;
     font-family: $barlow-font;
     font-size: large;
+    @media (max-width: 500px) {
+        display: none;
+    }
 }

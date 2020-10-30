@@ -38,10 +38,11 @@ function NavBar(props) {
                 <p className='greeting'> {props.user && `Welcome, ${props.user.name}!`} </p>
 
                 {/* logout button works if props.history.push stays */}
-                {props.user && <a className='logout-link' onClick={() => {
-                    props.logoutUser()
-                    props.history.push('/')
-                }}> Logout </a>}
+                {props.user &&
+                    <a className='logout-link' onClick={() => {
+                        props.logoutUser()
+                        props.history.push('/')
+                    }}> Logout </a>}
             </div>
         </div>
 

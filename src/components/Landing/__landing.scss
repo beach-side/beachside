@@ -9,18 +9,21 @@ $barlow-font: 'Barlow', sans-serif;
     flex-direction: column;
 	justify-content: center;
     align-items: center;
-    
 }
 
 @mixin inputBoxArea() {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     width: 35vw;
     height: 30vh;
     background: transparentize(white, 0.5);
-    border-radius: 26px;
+    border-radius: 23px;
+    @media (max-width: 500px) {
+        height: 160px;
+        width: 250px;
+    }
 }
 
 @mixin inputs() {
@@ -29,9 +32,13 @@ $barlow-font: 'Barlow', sans-serif;
     border: none;
     letter-spacing: 0.2em;
     border-radius: 4px;
+    @media (max-width: 500px) {
+        width: 185px;
+    }
 }
 
 @mixin buttons() {
+    font-family: $barlow-font;
     color: $main-font-color;
     letter-spacing: 0.06em;
     border: none;
@@ -47,7 +54,7 @@ $barlow-font: 'Barlow', sans-serif;
 
 .landing-div {
     @include flexVerticalCenter();
-
+    
     width: 100%;
     height: 89vh;
     background-image: url(../../assets/pic2.jpg);
@@ -58,9 +65,15 @@ $barlow-font: 'Barlow', sans-serif;
 
 .nav-to-map-button {
     @include buttons();
+    font-family: $barlow-font;
+    height: 125px;
+    width: 700px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     font-size: 41px;
     outline: none;
-    padding: 40px 175px;
     border-radius: 75px;
     background: transparentize(white, .35);
     &:hover {
@@ -77,6 +90,7 @@ $barlow-font: 'Barlow', sans-serif;
     justify-content: space-around;
     align-items: baseline;
     color: $main-font-color;
+    font-family: $barlow-font;
     button {
         @include buttons();
         background: none;
@@ -90,6 +104,19 @@ $barlow-font: 'Barlow', sans-serif;
         display: flex;
         flex-direction: column;
         align-items: center;
+    
+    }
+    .logged-in-message {
+        font-family: $barlow-font;
+        color: $main-font-color;
+        font-size: 25px;
+        letter-spacing: 0.06em;
+        text-align: center;
+        @media (max-width: 500px) {
+            font-size: 19px;
+            width: 150px;
+            line-height: 23px;
+        }
     }
 }
 
@@ -159,6 +186,7 @@ $barlow-font: 'Barlow', sans-serif;
             background: none;
             font-size: 17px;
             font-weight: 500;
+            padding-top: 15px;
             &:hover {
                 color: $accent-orange;
             }
@@ -190,3 +218,169 @@ $barlow-font: 'Barlow', sans-serif;
     }
 }
 
+@media (max-width: 500px) {
+    * {
+        box-sizing: border-box;
+    }
+
+    .landing-div {
+        @include flexVerticalCenter();
+        
+    
+        width: 100%;
+        height: 92vh;
+        background-image: url(../../assets/pic2.jpg);
+        background-size: cover;
+        background-position: center;
+        font-family: $barlow-font;
+    }
+    
+    .nav-to-map-button {
+        @include buttons();
+        
+        height: 60px;
+        width: 225px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+    
+        padding: 0px 0px;
+        border-radius: 75px;
+        background: transparentize(white, .35);
+        &:hover {
+            background: transparentize(white, 0.15);
+            text-shadow: 2px 2px 4px white;
+        }  
+        // p {
+        //     height: 20px;
+        //     width: 50px;
+        //     display: flex;
+        //     justify-content: none;
+        //     flex-direction: none;
+        // }
+        span {
+            display: none;
+        }
+    }
+    
+    .login-links {
+        width: 35vw;
+        padding: 25px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        color: $main-font-color;
+        button {
+            @include buttons();
+            background: none;
+            font-size: 17px;
+            font-weight: 500;
+            &:hover {
+                color: $accent-orange;
+            }
+        }
+        .create-acct-area {
+            height: 50px;
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            p {
+                display: none;
+            }
+        }
+    }
+    
+    .input-box-area {
+        height: 30vh;
+        width: 50vw;
+        margin-right: none;
+    }
+    
+    .login {
+        @include inputBoxArea();
+    
+        // .login-view {
+        //     height: 17.5vh;
+        //     display: flex;
+        //     flex-direction: column;
+        //     justify-content: space-between;
+        // }
+    
+        .login-inputs {
+            color: $main-font-color;
+            // letter-spacing: 0.06em;
+    
+            input {
+                @include flexVerticalCenter();
+                @include inputs();
+                margin: 20px;
+            }
+        }
+    
+        .login-view-buttons {
+            width: 75vw;
+            display: flex; 
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: center;
+            button {
+                @include buttons();
+                background: none;
+                font-size: 14px;
+                font-weight: 500;
+                &:hover {
+                    color: $accent-orange;
+                }
+            }
+    
+        }
+    }
+    
+    .register {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 229px;
+        width: 250px;
+        background: transparentize(white, 0.5);
+        border-radius: 23px;
+    
+        .register-inputs {
+            input {
+                @include flexVerticalCenter();
+                @include inputs();
+                margin-top: 15px;
+            }
+        }
+    
+        .register-buttons {
+            width: 50vw;
+            display: flex; 
+            flex-direction: row;
+            justify-content: space-between;
+            button {
+                @include buttons();
+                background: none;
+                font-size: 14px;
+                font-weight: 500;
+                padding: 10px;
+                &:hover {
+                    color: $accent-orange;
+                }
+            }
+        }
+    }
+    
+    .website-description {
+        display: none;
+    }
+
+    .footer {
+        display: none;
+    }
+}
