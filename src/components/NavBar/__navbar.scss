@@ -10,9 +10,12 @@ $barlow-font: 'Barlow', sans-serif;
 }
 
 .header {
-    //background-color: red;
     height:8vh;
     width:100%;
+}
+
+.beachside-logo-link {
+    padding: 25px 0 0 4px;
 }
 
 .map-link{ //link to Map 
@@ -59,4 +62,7 @@ $barlow-font: 'Barlow', sans-serif;
     color: #19303f;
     font-family: $barlow-font;
     font-size: large;
+    @media (max-width: 500px) {
+        display: none;
+    }
 }
