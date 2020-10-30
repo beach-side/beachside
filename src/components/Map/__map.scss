@@ -14,8 +14,8 @@
         padding: 5px 10px;
         outline: none;
         font-size: 25px;
-    border: 3px solid #6990b4;
-    outline: none;
+        border: 3px solid #6990b4;
+        outline: none;
    }
    
    
@@ -88,6 +88,25 @@
             font-size: 20px;
         }
 
+
+    }
+
+    button{
+        padding: 5px;
+        font-size: 20px;
+        margin-top: 5px;
+        background-color: #d16f2d;
+        border-radius: 5px;
+        border: none;
+        outline: none;
+
+    &:hover{
+        cursor: pointer;
+        background-color: #c05711;
+    }
+    }
+    div{
+        font-size: 20px;
     }
 }
 
@@ -167,6 +186,7 @@
     }
 }
 
+
 @media(max-width: 500px){
     .search-box {
         position: absolute;
@@ -193,6 +213,7 @@
     }
        
     }
+    
     .load-beaches {
         position: absolute;
         bottom: 15px;
@@ -264,5 +285,6 @@
             }
     
         }
+
     }
 }

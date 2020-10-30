@@ -59,7 +59,7 @@ $barlow-font: 'Barlow', sans-serif;
 .nav-to-map-button {
     @include buttons();
     font-size: 41px;
-
+    outline: none;
     padding: 40px 175px;
     border-radius: 75px;
     background: transparentize(white, .35);

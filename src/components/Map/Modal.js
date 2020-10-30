@@ -84,10 +84,10 @@ function Modal(props) {
                     <div className='swell-info' key={index}>
                         <h2>Swell info</h2>
                         <h3>SwellDirection: {element.swellDirection}°</h3>
-                        <h3>SwellHeight:{element.swellHeight}'</h3>
+                        <h3>SwellHeight: {element.swellHeight} ft.</h3>
                         <h3>Swellperiod: {element.swellPeriod} Sec</h3>
-                        <h3>WaterTemperature: {element.waterTemperature} °F</h3>
-                        <h3>WaveHeight: {element.waveHeight}'</h3>
+                        <h3>Water Temp: {element.waterTemperature} °F</h3>
+                        <h3>WaveHeight: {element.waveHeight} ft.</h3>
                     </div>
                 )
             }) : <div>No swell information available</div>}

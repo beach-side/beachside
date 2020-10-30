@@ -73,14 +73,17 @@ function InfoContent(props) {
             <div>
 
             </div>
-            {!modal ? <button onClick={() => setModal(true)}>Surf Details</button> : null}
             {props.userid ?
                 !max ?
-                    !saved ? <button onClick={() => saveBeach()}><RiMapPinAddFill /> Add to favorites</button>
+                    !saved ?
+                        <div>
+                            <button onClick={() => saveBeach()}><RiMapPinAddFill /> Add to favorites</button>
+                        </div>
                         :
                         <div>Saved <BsBookmarkCheck /></div>
                     : <div>Max beaches saved</div>
                 : null}
+            {!modal ? <button onClick={() => setModal(true)}>Surf Details</button> : null}
             {!modal ? null : <Modal setModal={setModal} lat={props.lat} lng={props.lng} />}
         </div>
     )
