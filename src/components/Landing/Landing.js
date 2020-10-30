@@ -35,8 +35,12 @@ function Landing(props) {
                 <div className='nav-to-map-div'>
                     <button className='nav-to-map-button'
                         onClick={() => {props.history.push('/beachmap')}}>
-                        Search For Beaches  
-                        <FaSearchLocation  style={{ paddingLeft: 15 }}/>
+                        <p className='search-beaches-btn'>
+                            Search For Beaches
+                        </p> 
+                        <span>
+                            <FaSearchLocation  style={{ paddingLeft: 15 }}/>
+                        </span>
                          
                     </button>
                 </div>

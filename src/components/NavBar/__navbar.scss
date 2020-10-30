@@ -1,4 +1,13 @@
 $barlow-font: 'Barlow', sans-serif; 
+@mixin linkHover() {
+    &:hover {
+        color: #D16F2D;
+
+    }
+    transition-duration: .2s;
+      -webkit-transition-duration: .2s;
+      -moz-transition-duration: .2s;
+}
 
 .header {
     //background-color: red;
@@ -14,8 +23,10 @@ $barlow-font: 'Barlow', sans-serif;
     cursor: pointer;
     font-family: $barlow-font;
     //font-size: x-large;
+    @include linkHover();
+}
 
-}.favorites-link { 
+.favorites-link { 
     position: absolute;
     right: 120px;
     top: 30px;
@@ -23,6 +34,7 @@ $barlow-font: 'Barlow', sans-serif;
     font-family: $barlow-font;
     cursor: pointer;
     //font-size: x-large;
+    @include linkHover();
 }
 
 .logout-link { //logout link does not need to be visable from home screen 
@@ -33,6 +45,7 @@ $barlow-font: 'Barlow', sans-serif;
     font-family: $barlow-font;
     cursor: pointer;
     //font-size: x-large;
+    @include linkHover();
 }
 // .nav-to-map-div {
 //     position: absolute;
