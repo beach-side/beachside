@@ -8,6 +8,7 @@ const weatherCtrl = require('./controllers/weatherController.js')
 const stormCtrl = require('./controllers/stormglassController')
 const beachCtrl = require('./controllers/beachesController')
 const timezoneCtrl = require('./controllers/timezoneController')
+const path = require('path')
 
 const app = express()
 const { CONNECTION_STRING, SERVER_PORT, SESSION_SECRET } = process.env
@@ -20,6 +21,7 @@ app.use(session({
   saveUninitialized: true,
   cookie: { maxAge: 1000 * 60 * 60 * 24 * 365 }
 }))
+
 
 //* Auth Controllers
 app.post('/api/auth/register', authCtrl.register)
@@ -44,6 +46,11 @@ app.get('/api/beaches', beachCtrl.getBeaches)
 
 //* TimeZone requests
 app.get('/api/timezone', timezoneCtrl.getTimezone)
+
+app.use(express.static(__dirname + '/../build'))
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../build/index.html'))
+})
 
 massive({
   connectionString: CONNECTION_STRING,
